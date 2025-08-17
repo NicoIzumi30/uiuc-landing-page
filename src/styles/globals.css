@@ -1,26 +1,115 @@
 @import "tailwindcss";
 
+/* CSS Variables untuk custom properties */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-inter: 'Inter', Helvetica, sans-serif;
+  --font-albert-sans: 'Albert Sans', Helvetica, sans-serif;
+}
+/* Tailwind v4 Theme Tokens (UGM) */
+@theme {
+  /* UGM Color Palette - Exact Match */
+  --color-ugm-blue: #083d62;
+  --color-ugm-primary: #073C64;
+  --color-ugm-yellow: #fdcb2c;
+  --color-ugm-dark-blue: #1a2c43;
+  --color-ugm-secondary-bg: #fafafa;
+
+  /* Aliases for easier use */
+  --color-primary: #073C64;
+  --color-secondary: #fdcb2c;
+  --color-primary-bg: #083d62;
+  --color-secondary-bg: #1a2c43;
+
+  /* Font families */
+  --font-inter: "Inter", Helvetica, sans-serif;
+  --font-albert-sans: "Albert Sans", Helvetica, sans-serif;
+
+  /* Typography sizes (font-size + line-height) */
+  --text-ugm-lg: 18px;
+  --leading-ugm-lg: 27px;
+
+  --text-ugm-base: 16px;
+  --leading-ugm-base: 24px;
+
+  --text-ugm-sm: 14px;
+  --leading-ugm-sm: 20px;
+
+  --text-ugm-xs: 12px;
+  --leading-ugm-xs: 16px;
+
+  /* Letter spacing */
+  --tracking-ugm-tight: 0.25px;
+  --tracking-ugm-normal: 0.5px;
+  --tracking-ugm-wide: 1px;
+
+  /* Max widths / sizes */
+  --size-7xl: 1200px;              /* overrides default 7xl to 1200px */
+  --size-ugm-container: 1200px;    /* enables max-w-ugm-container */
+
+  /* Spacing scale */
+  --spacing-18: 4.5rem;            /* 72px */
+  --spacing-22: 5.5rem;            /* 88px */
+  --spacing-ugm-sm: 3.375rem;      /* 54px */
+
+  /* Z-index */
+  --index-60: 60;
+  --index-70: 70;
+
+  /* Screens (breakpoints) */
+  --breakpoint-xs: 475px;
+  --breakpoint-ugm-lg: 1024px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Base styles */
+* {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+  height: 100%;
+  font-family: var(--font-albert-sans);
+}
+
+/* Focus styles untuk accessibility */
+button:focus-visible {
+  @apply outline-2 outline-blue-500 outline-offset-2;
+}
+
+a {
+  @apply no-underline;
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .font-inter {
+    font-family: var(--font-inter);
+  }
+
+  .font-albert-sans {
+    font-family: var(--font-albert-sans);
+  }
+  
+  /* Typography utilities (generic) */
+  .text-brand-lg {
+    font-size: 18px;
+    line-height: 27px;
+  }
+  
+  .text-brand-base {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  
+  .text-brand-sm {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .text-brand-xs {
+    font-size: 12px;
+    line-height: 16px;
+  }
 }
