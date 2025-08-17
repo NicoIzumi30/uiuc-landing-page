@@ -51,7 +51,7 @@ export default function Hero() {
         >
           {/* Slider viewport */}
           <div
-            className="relative h-[20rem] md:h-[30rem] lg:h-[40rem] rounded-2xl"
+            className="relative h-[13rem] md:h-[30rem] lg:h-[40rem] rounded-2xl"
           >
             {/* Slides track */}
             <div className="absolute inset-0 overflow-hidden rounded-2xl">
@@ -162,7 +162,7 @@ export default function Hero() {
                 type="button"
                 aria-label="Slide sebelumnya"
                 onClick={prev}
-                className="pointer-events-auto inline-flex h-11 w-11 items-center justify-center rounded-full bg-secondary opacity-80 hover:opacity-100 text-white shadow-md focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 z-10"
+                className=" md:ml-[-2.3rem] pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary opacity-80 hover:opacity-100 text-white shadow-md focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 z-10"
               >
                 {/* Left chevron */}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
@@ -173,7 +173,7 @@ export default function Hero() {
                 type="button"
                 aria-label="Slide berikutnya"
                 onClick={next}
-                className="pointer-events-auto inline-flex h-11 w-11 items-center justify-center rounded-full bg-secondary opacity-80 hover:opacity-100 text-white shadow-md focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 z-10"
+                className="md:mr-[-2.3rem] pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary opacity-80 hover:opacity-100 text-white shadow-md focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 z-10"
               >
                 {/* Right chevron */}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
