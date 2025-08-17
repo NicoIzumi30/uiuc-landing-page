@@ -111,37 +111,45 @@ export default function Collaboration() {
           </p>
         </div>
 
-
-          <div className="relative">
-            <Marquee 
-              speed={50} 
-              gradient={true} 
-              gradientColor={[255, 255, 255]} 
-              gradientWidth={50}
-              className="py-4"
-            >
-              {firstRow.map((partner) => (
-                <div 
-                  key={`first-${partner.id}`} 
-                  className="mx-6 flex flex-col items-center group cursor-pointer"
-                >
-                  <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform group-hover:scale-105 border border-gray-100">
-                    <img 
-                      src={partner.logo} 
-                      alt={partner.name}
-                      className="h-12 w-auto object-contain mb-3"
-                    />
-                    <div className="text-center">
-                      <h4 className="text-sm font-semibold text-gray-800 mb-1">{partner.name}</h4>
-                      <span className="text-xs text-gray-500 px-2 py-1 bg-gray-100 rounded-full">
-                        {partner.type}
-                      </span>
-                    </div>
+        {/* Marquee Section with Fade Effects */}
+        <div className="relative overflow-hidden">
+          {/* Left fade overlay */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-white via-white/90 to-transparent z-10 pointer-events-none"></div>
+          
+          {/* Right fade overlay */}
+          <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-white via-white/90 to-transparent z-10 pointer-events-none"></div>
+          
+          <Marquee 
+            speed={50} 
+            gradient={true} 
+            gradientColor={[255, 255, 255]} 
+            gradientWidth={80}
+            className="py-4"
+            pauseOnHover={true}
+            loop={0}
+          >
+            {firstRow.map((partner) => (
+              <div 
+                key={`first-${partner.id}`} 
+                className="mx-6 flex flex-col items-center group cursor-pointer"
+              >
+                <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform group-hover:scale-105 border border-gray-100">
+                  <img 
+                    src={partner.logo} 
+                    alt={partner.name}
+                    className="h-12 w-auto object-contain mb-3"
+                  />
+                  <div className="text-center">
+                    <h4 className="text-sm font-semibold text-gray-800 mb-1">{partner.name}</h4>
+                    <span className="text-xs text-gray-500 px-2 py-1 bg-gray-100 rounded-full">
+                      {partner.type}
+                    </span>
                   </div>
                 </div>
-              ))}
-            </Marquee>
-          </div>
+              </div>
+            ))}
+          </Marquee>
+        </div>
 
         {/* Benefits Section */}
         {/* <div className="mt-16 grid md:grid-cols-3 gap-8">
