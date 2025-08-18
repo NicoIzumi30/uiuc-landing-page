@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import uni from '@/data/university-data.json';
 
 const slides = [
   {
@@ -40,10 +41,11 @@ export default function Hero() {
 
   return (
     <section
+      id="beranda"
       className="relative w-full bg-white"
       aria-label="Hero carousel"
     >
-      <div className="relative mx-auto max-w-[100rem] px-4 sm:px-6 lg:px-8 pt-6 pb-24 lg:pb-28">
+      <div className="relative mx-auto max-w-[100rem] px-4 sm:px-6 lg:px-8 pt-12 pb-24 lg:pb-28">
         <div
           className="relative rounded-2xl bg-gradient-to-br from-primary to-[#1a2c43]"
           onMouseEnter={() => setPaused(true)}
@@ -80,11 +82,11 @@ export default function Hero() {
                 <div className="m-4 lg:m-0 rounded-xl bg-white p-6 md:p-8 shadow-2xl ring-1 ring-black/5 space-y-6 font-albert-sans">
                   {/* Heading */}
                   <header className="space-y-1">
-                    <h1 className="font-inter text-2xl font-extrabold text-primary">
-                      Yuk Daftar Sekarang!
+                    <h1 className="font-albert-sans text-2xl font-extrabold text-primary">
+                      Yuk Daftar PMB Sekarang!
                     </h1>
-                    <p className="text-gray-400">
-                      Bantuan Seputar Pendaftaran Beasiswa?
+                    <p className="text-gray-500">
+                      Butuh bantuan seputar Pendaftaran Mahasiswa Baru (PMB)?
                     </p>
                   </header>
 
@@ -94,10 +96,10 @@ export default function Hero() {
                     <div className="flex items-center gap-3">
                       <div className="inline-flex">
                         <Link
-                          href="https://wa.me/085253444999"
+                          href={`https://wa.me/${uni?.kontak?.adm_pmb_wa || '6289512314188'}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          aria-label="Hubungi WhatsApp 085253444999"
+                          aria-label={`Hubungi WhatsApp ${uni?.kontak?.adm_pmb_wa || '6289512314188'}`}
                           className="inline-flex items-center rounded-lg bg-primary px-2.5 py-2 text-white  focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2"
                         >
                           {/* WhatsApp icon */}
@@ -114,39 +116,29 @@ export default function Hero() {
                       </div>
                       <div className="inline-flex flex-col">
                         <Link
-                          href="https://wa.me/085253444999"
+                          href={`https://wa.me/${uni?.kontak?.adm_pmb_wa || '6289512314188'}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="font-inter text-base font-semibold text-black hover:underline focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2"
+                          className="font-albert-sans text-base font-semibold text-black hover:underline focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2"
                         >
-                          085253444999
+                          {`+${uni?.kontak?.adm_pmb_wa || '6289512314188'}`}
                         </Link>
                       </div>
                     </div>
                   </div>
 
-                  {/* Scholarship info (dashed) */}
-                  <Link
-                    href="https://beasiswa.amikom.ac.id/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 rounded-lg border-2 border-primary border-dashed px-2 py-3 text-center hover:bg-primary focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 text-primary hover:text-white"
-                  >
-                    <span className="font-inter text-base font-semibold">
-                      Info Beasiswa Mahasiswa Baru
-                    </span>
-                  </Link>
+                  {/* Removed scholarship info block as requested */}
 
                   {/* CTA PMB */}
                   <Link
-                    href="https://cmhs.amikom.ac.id/daftar#!/"
+                    href={uni?.pmb?.tautan_pendaftaran || 'https://pmb.cic.ac.id'}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-between rounded-lg bg-primary px-6 py-5 focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2"
                   >
                     <div className="flex flex-col">
                       <span className="text-white text-sm">Pendaftaran Mahasiswa Baru</span>
-                      <span className="text-white/90 -mt-1">pmb.amikom.ac.id</span>
+                      <span className="text-white/90 -mt-1">pmb.cic.ac.id</span>
                     </div>
                     <span aria-hidden="true" className="inline-flex">
                       <Image src="/img/vector.svg" alt="" width={20} height={20} />

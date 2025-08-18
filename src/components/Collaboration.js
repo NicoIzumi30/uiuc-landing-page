@@ -99,7 +99,7 @@ export default function Collaboration() {
   const secondRow = [...partnersWithLogos.slice(6, 12), ...partnersWithLogos.slice(6, 12), ...partnersWithLogos.slice(6, 12)]
 
   return (
-    <div className="py-16 bg-white overflow-hidden">
+    <section id="kerjasama" className="py-16 bg-white overflow-hidden">
       <div>
         {/* Header */}
         <div className="text-center mb-12">
@@ -177,6 +177,6 @@ export default function Collaboration() {
         </div> */}
 
       </div>
-    </div>
+    </section>
   )
 }

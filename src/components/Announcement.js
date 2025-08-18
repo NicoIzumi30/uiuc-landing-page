@@ -101,7 +101,7 @@ const eventData = [
 
 export default function Announcement() {
   return (
-    <div className="py-12 sm:py-16 bg-white relative overflow-hidden">      
+    <section id="pengumuman" className="py-12 sm:py-16 bg-primary  relative overflow-hidden">
       {/* Main content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 lg:items-start">
@@ -109,18 +109,18 @@ export default function Announcement() {
           {/* PENGUMUMAN Section */}
           <div className="flex flex-col h-full">
             <div className="flex items-center gap-3 mb-6 sm:mb-8">
-              <Megaphone className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
-              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800">PENGUMUMAN</h2>
+              <Megaphone className="h-6 w-6 sm:h-8 sm:w-8 text-secondary" />
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white">PENGUMUMAN</h2>
             </div>
             
             <div className="space-y-4 sm:space-y-6 flex-1">
               {announcementData.map((item) => (
-                <div key={item.id} className="group cursor-pointer">
-                  <div className="border-b border-gray-200 pb-3 sm:pb-4 hover:border-primary/30 transition-colors">
-                    <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-2 group-hover:text-primary transition-colors leading-tight">
+                <div key={item.id} className="group hover:cursor-pointer">
+                  <div className="border-b border-white/20 pb-3 sm:pb-4 hover:border-white/40 transition-colors">
+                    <h3 className="text-base sm:text-lg font-semibold text-white mb-2 group-hover:text-secondary transition-colors leading-tight">
                       {item.title}
                     </h3>
-                    <p className="text-gray-500 text-sm">{item.date}</p>
+                    <p className="text-white/70 text-sm">{item.date}</p>
                   </div>
                 </div>
               ))}
@@ -128,7 +128,7 @@ export default function Announcement() {
             
             {/* View More Button */}
             <div className="mt-6 sm:mt-8">
-              <button className="flex items-center gap-2 border border-primary text-primary hover:bg-primary hover:text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg transition-all duration-300 group text-sm sm:text-base w-full sm:w-auto justify-center sm:justify-start">
+              <button className="flex items-center gap-2 border border-white text-white hover:border-none hover:bg-secondary hover:text-primary px-4 sm:px-6 py-2 sm:py-3 rounded-lg transition-all duration-300 group text-sm sm:text-base w-full sm:w-auto justify-center sm:justify-start">
                 <Megaphone className="h-4 w-4" />
                 <span className="font-medium">PENGUMUMAN LAINNYA</span>
                 <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -139,44 +139,44 @@ export default function Announcement() {
           {/* EVENT/KEGIATAN Section */}
           <div className="flex flex-col h-full">
             <div className="flex items-center gap-3 mb-6 sm:mb-8">
-              <Calendar className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
-              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800">EVENT/KEGIATAN</h2>
+              <Calendar className="h-6 w-6 sm:h-8 sm:w-8 text-secondary" />
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white">EVENT/KEGIATAN</h2>
             </div>
             
             <div className="space-y-3 sm:space-y-4 flex-1">
               {eventData.map((event) => (
                 <div 
                   key={event.id} 
-                  className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 border border-gray-200 rounded-lg hover:border-primary/50 hover:bg-gray-50 transition-all duration-300 cursor-pointer group"
+                  className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 border border-white/20 rounded-lg hover:border-secondary/60 hover:bg-white/5 transition-all duration-300 hover:cursor-pointer group"
                 >
                   {/* Date Box */}
-                  <div className="flex-shrink-0 bg-gray-50 group-hover:bg-primary/10 rounded-lg p-2 sm:p-3 text-center min-w-[60px] sm:min-w-[80px] transition-colors">
-                    <div className="text-lg sm:text-2xl font-bold text-primary">{event.day}</div>
-                    <div className="text-xs sm:text-sm text-gray-600">{event.month}</div>
-                    <div className="text-xs text-gray-500">{event.year}</div>
+                  <div className="flex-shrink-0 bg-white/10 group-hover:bg-white/15 rounded-lg p-2 sm:p-3 text-center min-w-[60px] sm:min-w-[80px] transition-colors">
+                    <div className="text-lg sm:text-2xl font-bold text-white">{event.day}</div>
+                    <div className="text-xs sm:text-sm text-white/70">{event.month}</div>
+                    <div className="text-xs text-white/60">{event.year}</div>
                   </div>
                   
                   {/* Event Content */}
                   <div className="flex-1 min-w-0">
                     {/* Event Title */}
-                    <h3 className="text-sm sm:text-base font-bold text-gray-800 mb-1 sm:mb-2 group-hover:text-primary transition-colors leading-tight">
+                    <h3 className="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2 group-hover:text-secondary transition-colors leading-tight">
                       {event.title}
                     </h3>
                     
                     {/* Event Subtitle (if exists) */}
                     {event.subtitle && (
-                      <h4 className="text-xs sm:text-sm font-semibold text-primary mb-1 sm:mb-2">
+                      <h4 className="text-xs sm:text-sm font-semibold text-secondary mb-1 sm:mb-2">
                         {event.subtitle}
                       </h4>
                     )}
                     
                     {/* Full Date */}
-                    <div className="text-xs sm:text-sm text-primary font-medium mb-1">
+                    <div className="text-xs sm:text-sm text-white font-medium mb-1">
                       {event.date} -  {event.time}
                     </div>
                     
                     {/* Location */}
-                    <div className="text-xs sm:text-sm text-gray-500">
+                    <div className="text-xs sm:text-sm text-white/70">
                       {event.location}
                     </div>
                   </div>
@@ -186,7 +186,7 @@ export default function Announcement() {
             
             {/* View More Button */}
             <div className="mt-6 sm:mt-8">
-              <button className="flex items-center gap-2 border border-primary text-primary hover:bg-primary hover:text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg transition-all duration-300 group text-sm sm:text-base w-full sm:w-auto justify-center sm:justify-start">
+              <button className="flex items-center gap-2 border border-white text-white hover:border-none hover:bg-secondary hover:text-primary px-4 sm:px-6 py-2 sm:py-3 rounded-lg transition-all duration-300 group text-sm sm:text-base w-full sm:w-auto justify-center sm:justify-start">
                 <Calendar className="h-4 w-4" />
                 <span className="font-medium">KEGIATAN LAINNYA</span>
                 <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -195,6 +195,6 @@ export default function Announcement() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

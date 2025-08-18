@@ -1,0 +1,158 @@
+{
+  "identitas": {
+    "nama_singkat": "UCIC",
+    "nama_lengkap": "Universitas Catur Insan Cendekia",
+    "deskripsi": "UCIC adalah perguruan tinggi swasta di Cirebon yang berfokus pada pengembangan talenta masa depan melalui kurikulum adaptif, kolaborasi industri, dan fasilitas pembelajaran modern.",
+    "alamat": "Jl. Kesambi No.202, Drajat, Kesambi, Kota Cirebon, Jawa Barat 45133, Indonesia",
+    "kota": "Cirebon",
+    "provinsi": "Jawa Barat",
+    "kode_pos": "45133",
+    "website": "https://www.cic.ac.id",
+    "email": "info@cic.ac.id",
+    "telepon": "+62-231-200418",
+    "whatsapp": "6289512314188",
+    "lokasi_google_maps": "https://maps.google.com/?q=Universitas+Catur+Insan+Cendekia+Cirebon"
+  },
+  "kontak": {
+    "adm_pmb_wa": "6289512314188",
+    "adm_pmb_email": "info@cic.ac.id",
+    "adm_pmb_telepon": "+62-231-200418",
+    "jam_layanan": "Senin - Jumat, 08:00 - 16:00 WIB"
+  },
+  "pmb": {
+    "tautan_pendaftaran": "https://pmb.cic.ac.id",
+    "syarat_umum": [
+      "Fotokopi Akta Kelahiran",
+      "Fotokopi KTP/Kartu Pelajar",
+      "Fotokopi Raport SMA/SMK (2 semester)",
+      "Pas foto",
+      "Fotokopi Kartu Keluarga"
+    ],
+    "jalur_pendaftaran": [
+      "Reguler",
+      "Beasiswa Akademik",
+      "Beasiswa Non-Akademik (Kejuaraan/OSIS)",
+      "SNBP/SNBT"
+    ],
+    "jadwal": {
+      "gelombang_1": "Jan - Maret",
+      "gelombang_2": "April - Juni",
+      "gelombang_3": "Juli - Agustus"
+    },
+    "biaya_pendaftaran": "cek di https://pmb.cic.ac.id/biaya"
+  },
+  "fakultas_dan_prodi": [
+    {
+      "fakultas": "Fakultas Teknologi & Informasi",
+      "program_studi": [
+        {
+          "nama": "Teknik Informatika",
+          "jenjang": "S1",
+          "akreditasi": "Baik Sekali",
+          "deskripsi_singkat": "Fokus pada rekayasa perangkat lunak, jaringan, AI, dan sistem cerdas."
+        },
+        {
+          "nama": "Sistem Informasi",
+          "jenjang": "S1",
+          "akreditasi": "Baik Sekali",
+          "deskripsi_singkat": "Fokus pada tata kelola TI, analitik bisnis, dan transformasi digital."
+        },
+        {
+          "nama": "Desain Komunikasi Visual",
+          "jenjang": "S1",
+          "akreditasi": "Baik",
+          "deskripsi_singkat": "Kreativitas visual untuk komunikasi, branding, dan media."
+        },
+        {
+          "nama": "Manajemen Informatika",
+          "jenjang": "D3",
+          "akreditasi": "Baik",
+          "deskripsi_singkat": "Menguasai pengembangan web, aplikasi, dan digital business support."
+        },
+        {
+          "nama": "Komputerisasi Akuntansi",
+          "jenjang": "D3",
+          "akreditasi": "Baik",
+          "deskripsi_singkat": "Akuntansi terkomputerisasi dan sistem keuangan berbasis TI."
+        }
+      ]
+    },
+    {
+      "fakultas": "Fakultas Ekonomi & Bisnis",
+      "program_studi": [
+        {
+          "nama": "Manajemen",
+          "jenjang": "S1",
+          "akreditasi": "Baik Sekali",
+          "deskripsi_singkat": "Fokus pada manajemen pemasaran, keuangan, SDM, dan kewirausahaan."
+        },
+        {
+          "nama": "Akuntansi",
+          "jenjang": "S1",
+          "akreditasi": "Baik Sekali",
+          "deskripsi_singkat": "Fokus pada akuntansi keuangan, pajak, auditing, dan konsultan bisnis."
+        },
+        {
+          "nama": "Manajemen Bisnis",
+          "jenjang": "D3",
+          "akreditasi": "Baik",
+          "deskripsi_singkat": "Fokus pada keterampilan praktis bisnis, administrasi, dan wirausaha."
+        }
+      ]
+    }
+  ],
+  "fasilitas": [
+    "Laboratorium Komputer ber-AC & Wi-Fi",
+    "Perpustakaan modern dengan akses e-journal",
+    "Ruang kelas multimedia",
+    "Auditorium",
+    "Ruang startup/inkubasi bisnis",
+    "Lapangan olahraga dan UKM aktif"
+  ],
+  "beasiswa": {
+    "tersedia": true,
+    "tautan_info": "https://pmb.cic.ac.id/informasi-beasiswa",
+    "jenis": [
+      "Beasiswa Akademik (Rapot)",
+      "Beasiswa Non-Akademik (Prestasi Kejuaraan)",
+      "Beasiswa Pengurus OSIS/Eskul",
+      "Beasiswa SNBP/SNBT"
+    ]
+  },
+  "biaya_kuliah": {
+    "tautan_info": [
+      "https://pmb.cic.ac.id/biaya",
+      "https://pmb.cic.ac.id/informasi-biaya-pendidikan"
+    ],
+    "catatan": "Rincian biaya per prodi tersedia di portal resmi."
+  },
+  "kegiatan_mahasiswa": [
+    "Unit Kegiatan Mahasiswa (UKM) Teknologi",
+    "Komunitas Riset AI dan Data",
+    "Kegiatan olahraga dan seni",
+    "Program magang dan studi independen MBKM"
+  ],
+  "faq": [
+    {
+      "pertanyaan": "Bagaimana cara mendaftar?",
+      "jawaban": "Kunjungi https://pmb.cic.ac.id, buat akun, lengkapi data, unggah dokumen, dan ikuti petunjuk pembayaran."
+    },
+    {
+      "pertanyaan": "Apakah ada beasiswa?",
+      "jawaban": "Ya, tersedia jalur beasiswa akademik, non-akademik, OSIS/Eskul, dan SNBP/SNBT. Info lengkap di https://pmb.cic.ac.id/informasi-beasiswa."
+    },
+    {
+      "pertanyaan": "Di mana lokasi kampus?",
+      "jawaban": "Jl. Kesambi No.202, Drajat, Kesambi, Kota Cirebon, Jawa Barat 45133. Lihat peta: https://maps.google.com/?q=Universitas+Catur+Insan+Cendekia+Cirebon"
+    },
+    {
+      "pertanyaan": "Berapa biaya kuliah?",
+      "jawaban": "Biaya kuliah bervariasi sesuai prodi dan jalur. Cek di https://pmb.cic.ac.id/biaya."
+    }
+  ],
+  "kebijakan": {
+    "catatan_privasi": "Data yang dikirim melalui chatbot digunakan untuk memberikan informasi kampus. Jangan kirim data sensitif."
+  },
+  "versi": "1.0.1",
+  "terakhir_diperbarui": "2025-08-18"
+}

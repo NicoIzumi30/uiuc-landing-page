@@ -3,38 +3,32 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import uni from '@/data/university-data.json';
+
+const faculties = Array.isArray(uni?.fakultas_dan_prodi) ? uni.fakultas_dan_prodi : [];
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
-
-  const topBarLinks = [
-    { name: 'Email', href: 'https://ugmail.ugm.ac.id/' },
-    { name: 'Perpustakaan', href: 'https://lib.ugm.ac.id/' },
-    { name: 'Mahasiswa', href: 'https://ugm.ac.id/id/mahasiswa/' },
-    { name: 'Staff', href: 'https://ugm.ac.id/id/staff/' },
-    { name: 'Alumni', href: 'https://ugm.ac.id/id/alumni/' }
-  ];
-
-  const mainMenuItems = [
-    { name: 'Pendaftaran', href: 'https://ugm.ac.id/id/', hasArrow: true },
-    { name: 'Pendidikan', href: 'https://ugm.ac.id/id/', hasArrow: true },
-    { name: 'Penelitian', href: 'https://ugm.ac.id/id/', hasArrow: true },
-    { name: 'Pengabdian', href: 'https://ugm.ac.id/id/', hasArrow: true },
-    { name: 'Layanan', href: 'https://ugm.ac.id/id/', hasArrow: true },
-    { name: 'Tentang', href: 'https://ugm.ac.id/id/', hasArrow: true },
-    { name: 'SDGs Portal', href: 'https://ugm.ac.id/id/', hasArrow: true },
-    { name: 'Berita', href: 'https://ugm.ac.id/id/', active: true },
-    { name: 'PIONIR 2025', href: 'https://pionir.ugm.ac.id/2025/' }
-  ];
+  const [isFakultasOpenDesktop, setIsFakultasOpenDesktop] = useState(false);
+  const [isFakultasOpenMobile, setIsFakultasOpenMobile] = useState(false);
 
   const socialLinks = [
-    { icon: 'fab fa-instagram', href: 'https://www.instagram.com/ugm.yogyakarta' },
-    { icon: 'fab fa-youtube', href: 'https://m.youtube.com/@UGM.Yogyakarta' },
-    { icon: 'fab fa-facebook', href: 'https://www.facebook.com/UGMYogyakarta/' },
-    { icon: 'fab fa-twitter', href: 'https://twitter.com/UGMYogyakarta/' },
-    { icon: 'fab fa-linkedin', href: 'https://id.linkedin.com/school/universitas-gadjah-mada-ugm-/' },
-    { icon: 'fab fa-tiktok', href: 'https://www.tiktok.com/@ugm.id/' }
+    { icon: 'fab fa-instagram', href: 'https://www.instagram.com/ucic.cirebon' },
+    { icon: 'fab fa-youtube', href: 'https://www.youtube.com' },
+    { icon: 'fab fa-facebook', href: 'https://www.facebook.com' },
+    { icon: 'fab fa-twitter', href: 'https://twitter.com' },
+    { icon: 'fab fa-linkedin', href: 'https://www.linkedin.com' },
+    { icon: 'fab fa-tiktok', href: 'https://www.tiktok.com' }
+  ];
+
+  const navItems = [
+    { name: 'Beranda', href: '#beranda' },
+    { name: 'Pengumuman', href: '#pengumuman' },
+    { name: 'Berita', href: '#berita' },
+    { name: 'Profil', href: '#profil' },
+    { name: 'Fasilitas', href: '#fasilitas' },
+    { name: 'Fakultas', href: '#fakultas', isDropdown: true }
   ];
 
   return (
@@ -45,29 +39,25 @@ const Navbar = () => {
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       />
 
-      <header className="w-full bg-primary text-white font-albert-sans">
+      <header className="w-full bg-secondary-bg text-white font-albert-sans">
         {/* Desktop Layout */}
         <div className="hidden lg:block">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-between py-4">
               {/* Brand */}
-              <Link href="https://ugm.ac.id/id" className="flex items-center gap-3">
+              <Link href="#beranda" className="flex items-center gap-3">
                 <Image
-                  src="https://ugm.ac.id/wp-content/uploads/2022/11/ugm_header.png"
-                  alt="UGM Logo"
-                  width={60}
-                  height={60}
+                  src="/img/cic.png"
+                  alt="UCIC Logo"
+                  width={300}
+                  height={50}
                   className="object-contain"
                 />
-                <div className="font-inter">
-                  <div className="text-lg font-normal leading-tight">UNIVERSITAS</div>
-                  <div className="text-lg font-normal leading-tight">GADJAH MADA</div>
-                </div>
               </Link>
 
               {/* Right Cluster */}
               <div className="flex flex-col items-end gap-2">
-                {/* Top row: socials | lang | search */}
+                {/* Top row: socials | lang | PMB */}
                 <div className="flex items-center gap-5">
                   {socialLinks.map((social, index) => (
                     <Link
@@ -102,7 +92,7 @@ const Navbar = () => {
                     </button>
 
                     {isLanguageDropdownOpen && (
-                      <div className="absolute top-full right-0 mt-1 bg-white shadow-lg rounded border py-1 z-50">
+                      <div className="absolute top-full right-0 mt-1 bg-white shadow-lg rounded border py-1 z-50 min-w-28">
                         <Link
                           href="#"
                           className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 text-gray-700"
@@ -123,79 +113,105 @@ const Navbar = () => {
                     )}
                   </div>
 
-                  {/* Search */}
-                  <button className="hover:text-secondary transition-colors duration-200">
-                    <i className="fas fa-search text-lg"></i>
-                  </button>
-                </div>
-
-                {/* Bottom row: quick links */}
-                <div className="flex items-center gap-6">
-                  {topBarLinks.map((link, index) => (
-                    <Link
-                      key={index}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white hover:text-secondary transition-colors duration-200 text-sm"
-                    >
-                      {link.name}
-                    </Link>
-                  ))}
+                  {/* PMB Button */}
+                  <Link
+                    href={uni?.pmb?.tautan_pendaftaran || 'https://pmb.cic.ac.id'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-secondary text-primary font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition"
+                  >
+                    <span>Info PMB</span>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-{/* Desktop Main Menu (keeps the menu strip with yellow top border) */}
-        <div className="hidden lg:block bg-secondary-bg border-t border-secondary">
-          <div className="max-w-7xl mx-auto px-4">
-            <nav className="flex items-center">
-              {mainMenuItems.map((item, index) => (
+        {/* Desktop Main Menu */}
+        <div className="hidden lg:block bg-primary border-t border-secondary">
+          <div className="max-w-[100rem] mx-auto px-4">
+            <nav className="flex items-center justify-center">
+              {navItems.slice(0, 5).map((item, index) => (
                 <Link
                   key={index}
                   href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`px-5 py-3 md:py-4 font-semibold text-base transition-colors duration-200 ${
-                    item.active ? 'text-secondary' : 'text-white hover:text-secondary'
-                  }`}
+                  className="px-5 py-3 md:py-4 font-semibold text-base transition-colors duration-200 text-white hover:text-secondary"
                 >
                   {item.name}
                 </Link>
               ))}
+
+              {/* Fakultas Dropdown (Desktop) */}
+              <div
+                className="relative"
+                onMouseEnter={() => setIsFakultasOpenDesktop(true)}
+                onMouseLeave={() => setIsFakultasOpenDesktop(false)}
+              >
+                <button className="px-5 py-3 md:py-4 font-semibold text-base transition-colors duration-200 text-white hover:text-secondary inline-flex items-center gap-2">
+                  Fakultas
+                  <i className={`fas fa-chevron-down text-xs transition-transform ${isFakultasOpenDesktop ? 'rotate-180' : ''}`}></i>
+                </button>
+
+                {isFakultasOpenDesktop && (
+                  <div className="absolute left-0 top-full z-50 mt-1 w-[720px] bg-white text-gray-800 rounded-lg shadow-xl ring-1 ring-black/10 p-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {faculties.map((fak, i) => (
+                        <div key={i}>
+                          <Link href="#fakultas" className="font-semibold text-primary hover:underline">
+                            {fak.fakultas}
+                          </Link>
+                          <ul className="mt-3 space-y-2">
+                            {(fak.program_studi || []).map((prodi, j) => (
+                              <li key={j}>
+                                <Link
+                                  href="#fakultas"
+                                  className="text-sm text-gray-700 hover:text-primary"
+                                >
+                                  • {prodi.nama} ({prodi.jenjang})
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             </nav>
           </div>
         </div>
+
         {/* Mobile Header */}
         <div className="lg:hidden">
           <div className="flex items-center justify-between px-4 py-3 border-b border-secondary">
-            {/* Hamburger Menu */}
-            <div className='flex items-center gap-3'>
+            {/* Left cluster */}
+            <div className="flex items-center gap-3">
+              {/* Hamburger Menu */}
               <button
                 onClick={() => setIsMobileMenuOpen(true)}
                 className="p-2"
+                aria-label="Buka menu"
               >
                 <i className="fas fa-bars text-xl"></i>
               </button>
 
               {/* Logo */}
-              <Link href="https://ugm.ac.id/id" className="flex items-center gap-2">
+              <Link href="#beranda" className="flex items-center gap-2">
                 <Image
-                  src="https://ugm.ac.id/wp-content/uploads/2022/11/ugm_header.png"
-                  alt="UGM Logo"
+                  src="/img/ucic-logo.svg"
+                  alt="UCIC Logo"
                   width={40}
                   height={40}
                   className="object-contain"
                 />
-                <div className="font-inter text-sm">
-                  <div className="leading-tight">UNIVERSITAS</div>
-                  <div className="leading-tight">GADJAH MADA</div>
+                <div className="text-sm leading-tight">
+                  <div className="font-semibold">UCIC</div>
+                  <div className="opacity-90">Universitas CIC</div>
                 </div>
               </Link>
             </div>
-
 
             {/* Right Actions */}
             <div className="flex items-center gap-3">
@@ -204,6 +220,7 @@ const Navbar = () => {
                 <button
                   className="flex items-center gap-1"
                   onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
+                  aria-label="Pilih bahasa"
                 >
                   <div className="w-4 h-4 rounded-full overflow-hidden">
                     <Image
@@ -240,10 +257,15 @@ const Navbar = () => {
                 )}
               </div>
 
-              {/* Search */}
-              <button className="p-1">
-                <i className="fas fa-search text-lg"></i>
-              </button>
+              {/* PMB Button */}
+              <Link
+                href={uni?.pmb?.tautan_pendaftaran || 'https://pmb.cic.ac.id'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-secondary text-primary font-semibold px-3 py-1.5 rounded-md hover:opacity-90 transition text-sm"
+              >
+                <span>Info PMB</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -252,36 +274,33 @@ const Navbar = () => {
         {isMobileMenuOpen && (
           <div className="fixed inset-0 z-50 lg:hidden flex flex-col">
             {/* Mobile Menu Header */}
-            <div className="bg-primary flex items-center justify-between px-4 py-3 border-b border-secondary">
-              {/* Close Button */}
-              <div className='flex items-center gap-3'>
-
+            <div className="bg-secondary-bg flex items-center justify-between px-4 py-3 border-b border-secondary">
+              {/* Close + Logo */}
+              <div className="flex items-center gap-3">
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="p-2"
+                  aria-label="Tutup menu"
                 >
                   <i className="fas fa-times text-xl"></i>
                 </button>
 
                 {/* Logo */}
                 <Link
-                  href="https://ugm.ac.id/id"
+                  href="#beranda"
                   className="flex items-center gap-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <Image
-                    src="https://ugm.ac.id/wp-content/uploads/2022/11/ugm_header.png"
-                    alt="UGM Logo"
-                    width={40}
+                    src="/img/cic.png"
+                    alt="UCIC Logo"
+                    width={200}
                     height={40}
                     className="object-contain"
                   />
-                  <div className="font-inter text-sm">
-                    <div className="leading-tight">UNIVERSITAS</div>
-                    <div className="leading-tight">GADJAH MADA</div>
-                  </div>
                 </Link>
               </div>
+
               {/* Right Actions */}
               <div className="flex items-center gap-3">
                 {/* Language Selector */}
@@ -289,6 +308,7 @@ const Navbar = () => {
                   <button
                     className="flex items-center gap-1"
                     onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
+                    aria-label="Pilih bahasa"
                   >
                     <div className="w-4 h-4 rounded-full overflow-hidden">
                       <Image
@@ -328,37 +348,78 @@ const Navbar = () => {
                   )}
                 </div>
 
-                {/* Search */}
-                <button className="p-1">
-                  <i className="fas fa-search text-lg"></i>
-                </button>
+                {/* PMB Button */}
+                <Link
+                  href={uni?.pmb?.tautan_pendaftaran || 'https://pmb.cic.ac.id'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-secondary text-primary font-semibold px-3 py-1.5 rounded-md hover:opacity-90 transition text-sm"
+                >
+                  <span>Info PMB</span>
+                </Link>
               </div>
             </div>
 
             {/* Mobile Menu Content */}
-            <div className="flex-1 overflow-y-auto bg-secondary-bg">
+            <div className="flex-1 overflow-y-auto bg-primary">
               {/* Menu Items */}
               <div className="px-4 py-6">
-                {mainMenuItems.map((item, index) => (
+                {navItems.slice(0, 5).map((item, index) => (
                   <div key={index} className="border-b border-white/10 last:border-b-0">
                     <Link
                       href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex items-center justify-between py-4 text-lg font-medium transition-colors duration-200 ${item.active ? 'text-secondary' : 'hover:text-secondary'
-                        }`}
+                      className="flex items-center justify-between py-4 text-lg font-medium transition-colors duration-200 hover:text-secondary"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       <span>{item.name}</span>
-                      {item.hasArrow && <i className="fas fa-chevron-right text-sm text-white/70"></i>}
                     </Link>
                   </div>
                 ))}
+
+                {/* Fakultas (Mobile collapsible) */}
+                <div className="border-b border-white/10">
+                  <button
+                    className="w-full flex items-center justify-between py-4 text-lg font-medium hover:text-secondary"
+                    onClick={() => setIsFakultasOpenMobile(!isFakultasOpenMobile)}
+                  >
+                    <span>Fakultas</span>
+                    <i className={`fas fa-chevron-${isFakultasOpenMobile ? 'up' : 'down'} text-sm`}></i>
+                  </button>
+
+                  {isFakultasOpenMobile && (
+                    <div className="pb-4">
+                      {faculties.map((fak, i) => (
+                        <div key={i} className="mb-3 last:mb-0">
+                          <Link
+                            href="#fakultas"
+                            className="block text-base font-semibold text-secondary mb-2"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {fak.fakultas}
+                          </Link>
+                          <ul className="pl-3 space-y-2">
+                            {(fak.program_studi || []).map((prodi, j) => (
+                              <li key={j}>
+                                <Link
+                                  href="#fakultas"
+                                  className="text-sm text-white/90 hover:text-secondary"
+                                  onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                  • {prodi.nama} ({prodi.jenjang})
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
 
             {/* Mobile Menu Footer */}
-            <div className="bg-primary border-t border-secondary">
+            <div className="bg-secondary-bg border-t border-secondary">
               {/* Social Media */}
               <div className="flex justify-center gap-6 py-4">
                 {socialLinks.map((social, index) => (
@@ -371,22 +432,6 @@ const Navbar = () => {
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <i className={`${social.icon} text-xl`}></i>
-                  </Link>
-                ))}
-              </div>
-
-              {/* Footer Links */}
-              <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 pb-4 px-4">
-                {topBarLinks.map((link, index) => (
-                  <Link
-                    key={index}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-secondary transition-colors duration-200 text-sm"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.name}
                   </Link>
                 ))}
               </div>

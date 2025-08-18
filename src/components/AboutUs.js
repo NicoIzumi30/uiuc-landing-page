@@ -4,54 +4,46 @@ import { useState } from "react"
 import { ChevronDown, ChevronRight, Menu, X } from "lucide-react"
 
 const menuItems = [
-  { id: "welcome", label: "Rector's Welcome Speech" },
-  { id: "history", label: "History of CIC" },
-  { id: "vision", label: "Vision, Mission, & Goals" },
+  { id: "welcome", label: "Sambutan Rektor" },
+  { id: "history", label: "Sejarah UCIC" },
+  { id: "vision", label: "Visi, Misi, & Tujuan" },
 ]
 
 const contentData = {
   welcome: {
-    title: "RECTOR'S WELCOME SPEECH",
-    content: `Welcome to CIC University, where innovation meets tradition and academic excellence drives our mission forward. As we continue to build upon our strong foundation, we remain committed to providing world-class education that prepares our students for the challenges of tomorrow.
-
-Our university stands as a beacon of knowledge, fostering an environment where creativity, critical thinking, and entrepreneurship flourish. We believe in nurturing not just academic prowess, but also the character and leadership qualities that will serve our graduates throughout their careers.
-
-I invite you to explore the opportunities that await you at CIC University, where your journey toward success begins.`,
+    title: "SAMBUTAN REKTOR",
+    content: `Selamat datang di Universitas Catur Insan Cendekia (UCIC). Kami berkomitmen menghadirkan pendidikan berkualitas yang berorientasi pada teknologi dan kewirausahaan, serta membentuk lulusan berkarakter, berintegritas, dan siap bersaing di era global.`,
   },
   vision: {
-    title: "VISION, MISSION, AND OBJECTIVES",
-    content: `CIC University also carries out its role as a Knowledge based by collaborating with the business and industrial world as well as local governments throughout the Cirebon residency, both in the form of PBL (Problem Based Learning) based learning studies, sending practitioners to teach at CIC University as well as channeling students for field work practice and absorbing CIC University graduates and making CIC University graduates as strong entrepreneurs in the global era. To realize this, CIC University has a vision, mission, and objectives as follows:`,
+    title: "VISI, MISI, DAN TUJUAN",
+    content: `UCIC menjalankan peran sebagai perguruan tinggi berbasis pengetahuan yang berkolaborasi dengan dunia usaha, industri, dan pemerintah daerah. Visi, misi, dan tujuan UCIC sebagai berikut:`,
     expandableItems: [
       {
         id: "vision",
-        title: "CIC University Vision",
+        title: "Visi UCIC",
         content:
-          '"To become a university oriented towards technology and entrepreneurship, to support local communities by producing graduates who are capable of responding to changing times."',
+          '"Menjadi universitas yang berorientasi pada teknologi dan kewirausahaan untuk mendukung masyarakat daerah dengan menghasilkan lulusan yang mampu merespons perubahan zaman."',
         defaultExpanded: true,
       },
       {
         id: "mission",
-        title: "CIC University Mission",
+        title: "Misi UCIC",
         content:
-          "To provide quality education that integrates technology and entrepreneurship, fostering innovation and preparing students to become leaders in their respective fields while contributing to community development.",
+          "Menyelenggarakan pendidikan bermutu yang mengintegrasikan teknologi dan kewirausahaan, mendorong inovasi, serta menyiapkan lulusan menjadi pemimpin yang bermanfaat bagi masyarakat.",
         defaultExpanded: false,
       },
       {
         id: "goals",
-        title: "CIC University's Goals",
+        title: "Tujuan UCIC",
         content:
-          "To establish CIC University as a leading institution in technology and entrepreneurship education, to develop strategic partnerships with industry and government, and to produce graduates who are innovative, ethical, and globally competitive.",
+          "Menjadi institusi terkemuka dalam pendidikan teknologi dan kewirausahaan, membangun kemitraan strategis, serta menghasilkan lulusan yang inovatif, beretika, dan berdaya saing global.",
         defaultExpanded: false,
       },
     ],
   },
   history: {
-    title: "HISTORY OF CIC",
-    content: `CIC University was established with a vision to bridge the gap between academic learning and practical industry needs. Founded in the heart of Cirebon, our institution has grown from humble beginnings to become a recognized center of excellence in technology and entrepreneurship education.
-
-Over the years, we have continuously evolved our programs and facilities to meet the changing demands of the global marketplace. Our commitment to innovation and quality education has earned us recognition both nationally and internationally.
-
-Today, CIC University stands proud as an institution that not only imparts knowledge but also shapes the future leaders and entrepreneurs of tomorrow.`,
+    title: "SEJARAH UCIC",
+    content: `UCIC berdiri untuk menjembatani kebutuhan dunia akademik dan industri. Berlokasi di Kota Cirebon, UCIC terus berkembang melalui pembaruan kurikulum, peningkatan fasilitas, dan kolaborasi dengan berbagai mitra agar relevan dengan kebutuhan masa kini.`,
   },
 }
 
@@ -152,10 +144,10 @@ export default function AboutUsPage() {
   }
 
   return (
-    <div className="min-h-[75vh] bg-white">
+    <div id="profil" className="min-h-fit bg-white">
       <div className="text-center py-8">
         <div className="flex items-center justify-center gap-3 mb-2">
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-800">About Us</h1>
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-800">Tentang Kami</h1>
         </div>
       </div>
 
@@ -176,3 +168,4 @@ export default function AboutUsPage() {
     </div>
   )
 }
+

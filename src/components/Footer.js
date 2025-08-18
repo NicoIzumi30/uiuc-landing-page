@@ -1,6 +1,7 @@
 "use client"
 
 import { MapPin, Phone, Mail, MessageCircle } from "lucide-react"
+import Image from "next/image"
 
 export default function Footer() {
   return (
@@ -11,14 +12,19 @@ export default function Footer() {
           {/* University Info - Left Section */}
           <div className="lg:col-span-5">
             <div className="mb-8">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-2">CIC</h2>
-              <h3 className="text-lg font-medium mb-4 opacity-90">
-                Universitas Catur Insan Cendekia
-              </h3>
+              <div className="flex items-center gap-3 mb-3">
+                <Image
+                  src="/img/cic.png"
+                  alt="Logo UCIC"
+                  width={400}
+                  height={48}
+                  className="object-contain"
+                />
+              </div>
               <p className="text-blue-100 text-sm leading-relaxed max-w-md">
-                Menjadi universitas yang berorientasi dalam bidang teknologi dan 
-                kewirausahaan, untuk mendukung masyarakat daerah dengan 
-                menghasilkan lulusan yang mampu untuk menanggapi 
+                Menjadi universitas yang berorientasi dalam bidang teknologi dan
+                kewirausahaan, untuk mendukung masyarakat daerah dengan
+                menghasilkan lulusan yang mampu untuk menanggapi
                 perubahan jaman.
               </p>
             </div>
