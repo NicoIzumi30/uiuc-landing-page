@@ -136,7 +136,7 @@ export default function StudyProgram() {
                     {/* Action Button */}
                     <button
                       onClick={() => toggleExpansion(program.id)}
-                      className="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white px-4 sm:px-6 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto sm:ml-4"
+                      className="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white px-4 sm:px-6 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto sm:ml-4"
                     >
                       <span className="text-sm sm:text-base">Lihat Biaya</span>
                       {isExpanded ? (
@@ -171,7 +171,7 @@ export default function StudyProgram() {
                         <div className="space-y-3 sm:space-y-4 order-1 lg:order-2">
                           <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm">
                             <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-3 sm:mb-4">
-                              Informasi Biaya
+                              Informasi Program Studi
                             </h4>
                             <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
                               <div className="flex justify-between py-2 border-b border-gray-100">
@@ -197,7 +197,7 @@ export default function StudyProgram() {
                           <div className="space-y-2 sm:space-y-3">
                             <button
                               onClick={() => handleViewPDF(program.pdfUrl)}
-                              className="w-full bg-primary hover:bg-primary-dark text-white px-4 sm:px-6 py-3 rounded-xl font-medium transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
+                              className="w-full bg-primary hover:bg-primary-dark text-white px-4 sm:px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
                             >
                               <ExternalLink className="h-4 w-4" />
                               Buka PDF di Tab Baru
@@ -205,7 +205,7 @@ export default function StudyProgram() {
                             
                             <button
                               onClick={() => handleDownloadPDF(program.pdfUrl, program.name)}
-                              className="w-full bg-secondary hover:bg-yellow-500 text-gray-800 px-4 sm:px-6 py-3 rounded-xl font-medium transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
+                              className="w-full bg-secondary hover:bg-yellow-500 text-gray-800 px-4 sm:px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
                             >
                               <Download className="h-4 w-4" />
                               Download PDF

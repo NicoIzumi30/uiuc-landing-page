@@ -4,6 +4,7 @@ import AboutUs from '@/components/AboutUs';
 import Facility from '@/components/Facility';
 import StudyProgram from '@/components/StudyProgram';
 import Collaboration from '@/components/Collaboration';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Facility />
       <StudyProgram />
       <Collaboration />
+      <Footer />
     </div>
   );
 }
