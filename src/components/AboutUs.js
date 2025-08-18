@@ -5,9 +5,8 @@ import { ChevronDown, ChevronRight, Menu, X } from "lucide-react"
 
 const menuItems = [
   { id: "welcome", label: "Rector's Welcome Speech" },
-  { id: "vision", label: "Vision, Mission, & Goals" },
   { id: "history", label: "History of CIC" },
-  { id: "location", label: "Location" },
+  { id: "vision", label: "Vision, Mission, & Goals" },
 ]
 
 const contentData = {
@@ -53,14 +52,6 @@ I invite you to explore the opportunities that await you at CIC University, wher
 Over the years, we have continuously evolved our programs and facilities to meet the changing demands of the global marketplace. Our commitment to innovation and quality education has earned us recognition both nationally and internationally.
 
 Today, CIC University stands proud as an institution that not only imparts knowledge but also shapes the future leaders and entrepreneurs of tomorrow.`,
-  },
-  location: {
-    title: "LOCATION",
-    content: `CIC University is strategically located in Cirebon, West Java, Indonesia. Our campus is situated in a vibrant area that provides easy access to both urban amenities and natural beauty.
-
-The university campus features modern facilities including state-of-the-art laboratories, well-equipped classrooms, a comprehensive library, and recreational facilities. Our location offers students the perfect environment for learning and personal growth.
-
-With excellent transportation links and proximity to major business centers, our location provides students with numerous opportunities for internships, research collaborations, and career development.`,
   },
 }
 
@@ -161,7 +152,7 @@ export default function AboutUsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-[75vh] bg-white">
       <div className="text-center py-8">
         <div className="flex items-center justify-center gap-3 mb-2">
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-800">About Us</h1>

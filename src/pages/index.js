@@ -4,6 +4,7 @@ import AboutUs from '@/components/AboutUs';
 import Facility from '@/components/Facility';
 import StudyProgram from '@/components/StudyProgram';
 import Collaboration from '@/components/Collaboration';
+import Announcement from '@/components/Announcement';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       <Navbar />
       <Hero />
+      <Announcement />
       <AboutUs/>
       <Facility />
       <StudyProgram />
