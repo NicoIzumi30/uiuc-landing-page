@@ -8,15 +8,15 @@ import { useLanguage } from '@/context/LanguageContext';
 
 const slides = [
   {
-    src: 'https://ugm.ac.id/wp-content/uploads/2025/08/80-RI.jpg',
-    alt: 'Banner Universitas Amikom - Talenta Perusahaan Terpopuler',
+    src: '/img/hero/1.png',
+    alt: 'Banner Universitas UCIC - Talenta Perusahaan Terpopuler',
   },
   {
-    src: 'https://ugm.ac.id/wp-content/uploads/2025/08/MM-UGM.webp',
-    alt: 'Highlight Prestasi Universitas Amikom',
+    src: '/img/hero/2.png',
+    alt: 'Highlight Prestasi Universitas UCIC',
   },
   {
-    src: 'https://ugm.ac.id/wp-content/uploads/2025/08/WhatsApp-Image-2025-08-16-at-12.04.25.jpeg',
+    src: '/img/hero/3.png',	
     alt: 'Informasi Pendaftaran Mahasiswa Baru',
   },
 ];
