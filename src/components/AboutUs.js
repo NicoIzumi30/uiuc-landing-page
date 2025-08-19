@@ -86,12 +86,28 @@ export default function AboutUsPage() {
   const [activeMenu, setActiveMenu] = useState("vision");
   const [expandedItems, setExpandedItems] = useState(["vision"]);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [isWelcomeExpanded, setIsWelcomeExpanded] = useState(false);
+  const [isHistoryExpanded, setIsHistoryExpanded] = useState(false);
   const menuIds = ["welcome", "history", "vision"];
 
   const toggleExpanded = (id) => {
     setExpandedItems((prev) =>
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
     );
+  };
+
+  const getTruncatedContent = (content, percentage = 0.4) => {
+    const words = content.split(' ');
+    const truncateLength = Math.floor(words.length * percentage);
+    return words.slice(0, truncateLength).join(' ');
+  };
+
+  const toggleWelcomeReadMore = () => {
+    setIsWelcomeExpanded(!isWelcomeExpanded);
+  };
+
+  const toggleHistoryReadMore = () => {
+    setIsHistoryExpanded(!isHistoryExpanded);
   };
 
   const openImageModal = (image) => {
@@ -140,9 +156,63 @@ export default function AboutUsPage() {
 
         {/* Content */}
         <div className="space-y-6">
-          <p className="text-gray-600 leading-relaxed text-sm lg:text-base whitespace-pre-line">
-            {currentContent.content}
-          </p>
+          {activeMenu === "welcome" ? (
+            <div>
+              <p className="text-gray-600 leading-relaxed text-sm lg:text-base whitespace-pre-line">
+                {isWelcomeExpanded 
+                  ? currentContent.content 
+                  : getTruncatedContent(currentContent.content)
+                }
+                {!isWelcomeExpanded && "..."}
+              </p>
+              <button
+                onClick={toggleWelcomeReadMore}
+                className="mt-4 inline-flex items-center gap-2 px-6 py-3 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary/90 transition-colors duration-200 shadow-md hover:shadow-lg"
+              >
+                {isWelcomeExpanded ? (
+                  <>
+                    <span>{t('about.readLess')}</span>
+                    <ChevronDown className="h-4 w-4" />
+                  </>
+                ) : (
+                  <>
+                    <span>{t('about.readMore')}</span>
+                    <ChevronRight className="h-4 w-4" />
+                  </>
+                )}
+              </button>
+            </div>
+          ) : activeMenu === "history" ? (
+            <div>
+              <p className="text-gray-600 leading-relaxed text-sm lg:text-base whitespace-pre-line">
+                {isHistoryExpanded 
+                  ? currentContent.content 
+                  : getTruncatedContent(currentContent.content)
+                }
+                {!isHistoryExpanded && "..."}
+              </p>
+              <button
+                onClick={toggleHistoryReadMore}
+                className="mt-4 inline-flex items-center gap-2 px-6 py-3 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary/90 transition-colors duration-200 shadow-md hover:shadow-lg"
+              >
+                {isHistoryExpanded ? (
+                  <>
+                    <span>{t('about.readLess')}</span>
+                    <ChevronDown className="h-4 w-4" />
+                  </>
+                ) : (
+                  <>
+                    <span>{t('about.readMore')}</span>
+                    <ChevronRight className="h-4 w-4" />
+                  </>
+                )}
+              </button>
+            </div>
+          ) : (
+            <p className="text-gray-600 leading-relaxed text-sm lg:text-base whitespace-pre-line">
+              {currentContent.content}
+            </p>
+          )}
 
           {/* History Images - only for history menu */}
           {activeMenu === "history" && currentContent.images && (

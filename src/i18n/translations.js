@@ -79,7 +79,9 @@ export const translations = {
         welcome: 'SAMBUTAN REKTOR',
         history: 'SEJARAH UCIC',
         vision: 'VISI, MISI, DAN TUJUAN'
-      }
+      },
+      readMore: 'Baca Selengkapnya',
+      readLess: 'Baca Lebih Sedikit'
     },
     announce: {
       heading: 'PENGUMUMAN',
@@ -218,7 +220,9 @@ export const translations = {
         welcome: "RECTOR'S WELCOME",
         history: 'UCIC HISTORY',
         vision: 'VISION, MISSION, AND GOALS'
-      }
+      },
+      readMore: 'Read More',
+      readLess: 'Read Less'
     },
     announce: {
       heading: 'ANNOUNCEMENTS',
