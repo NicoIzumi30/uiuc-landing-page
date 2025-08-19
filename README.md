@@ -41,7 +41,7 @@ UCIC Landing Page adalah aplikasi web berbasis Next.js (Pages Router) yang menya
 
 ## Fitur Utama
 
-- Reusable component-based layout dengan navigasi yang jelas.
+- Reusable component-based layout dengan navigasi yang jelas
 - Multilingual support via React Context untuk state bahasa global.
 - Section lengkap: Hero, Announcement, Page Information, About Us, Facility, Study Program, Collaboration, Map Section, dan Footer.
 - Chatbot sederhana yang memanfaatkan API Gemini.
