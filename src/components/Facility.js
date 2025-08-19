@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 import { useLanguage } from "@/context/LanguageContext"
+import Image from "next/image"
 
 /**
  * Build facilitiesData by grouping images in /public/img/fasilitas by folder.
@@ -263,13 +264,14 @@ export default function Facility() {
               onClick={() => openModal(facility)}
               className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer"
             >
-              {/* Background Image with lazy-loaded <img> */}
+              {/* Background Image with optimized Next.js Image */}
               <div className="h-80 w-full relative overflow-hidden">
-                <img
+                <Image
                   src={facility.image}
                   alt={facility.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
@@ -342,11 +344,12 @@ export default function Facility() {
             {/* Main Image Display */}
             <div className="relative">
               <div className="aspect-video bg-gray-100 relative overflow-hidden">
-                <img
+                <Image
                   src={selectedFacility.gallery[currentImageIndex]}
                   alt={`${selectedFacility.title} - Image ${currentImageIndex + 1}`}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 80vw"
                 />
                 
                 {/* Navigation Arrows */}
@@ -386,11 +389,12 @@ export default function Facility() {
                           : "border-gray-200 hover:border-gray-300"
                       }`}
                     >
-                      <img
+                      <Image
                         src={image}
                         alt={`Thumbnail ${index + 1}`}
+                        width={80}
+                        height={64}
                         className="w-full h-full object-cover"
-                        loading="lazy"
                       />
                     </button>
                   ))}

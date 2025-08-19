@@ -1,7 +1,6 @@
 # UCIC Landing Page
 
 <div align="center">
-  <img src="public/img/ucic-logo.svg" alt="UCIC Logo" width="96" height="96" />
   <p align="center"><em>Official landing page for Universitas Catur Insan Cendekia</em></p>
 
   <a href="https://nextjs.org/">

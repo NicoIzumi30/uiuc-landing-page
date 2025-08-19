@@ -2,6 +2,7 @@
 
 import Marquee from "react-fast-marquee"
 import { useLanguage } from "@/context/LanguageContext"
+import Image from "next/image"
 
 const collaborationData = [
   {
@@ -70,9 +71,11 @@ export default function Collaboration() {
                 className="mx-6 flex items-center justify-center group cursor-pointer"
               >
                 <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition-all duration-300 transform group-hover:scale-105 border border-gray-100 w-48 h-24 flex items-center justify-center">
-                  <img 
+                  <Image 
                     src={partner.logo} 
                     alt={`Partner ${partner.id}`}
+                    width={128}
+                    height={64}
                     className="max-h-16 max-w-32 object-contain"
                   />
                 </div>

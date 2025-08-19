@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import Image from "next/image";
 
 const contentData = {
   welcome: {
@@ -223,9 +224,11 @@ export default function AboutUsPage() {
                   className="relative rounded-xl shadow-lg overflow-hidden border border-gray-200 cursor-pointer group transition-all duration-300 hover:shadow-xl"
                   onClick={() => openImageModal(image)}
                 >
-                  <img
+                  <Image
                     src={image.src}
                     alt={image.alt}
+                    width={800}
+                    height={320}
                     className="w-full h-64 lg:h-80 object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                   {/* Gradient Overlay */}
@@ -339,9 +342,11 @@ export default function AboutUsPage() {
             >
               <X className="h-6 w-6"/>
             </button>
-            <img
+            <Image
               src={selectedImage.src}
               alt={selectedImage.alt}
+              width={1200}
+              height={800}
               className="w-full h-auto rounded-lg shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             />
