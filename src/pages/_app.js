@@ -1,6 +1,7 @@
 import { Inter, Albert_Sans } from 'next/font/google';
 import '../styles/globals.css';
 import Chatbot from '../components/Chatbot';
+import { LanguageProvider } from '../context/LanguageContext';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -16,9 +17,11 @@ const albertSans = Albert_Sans({
 
 export default function App({ Component, pageProps }) {
   return (
-    <div className={`${inter.variable} ${albertSans.variable}`}>
-      <Component {...pageProps} />
-      <Chatbot />
-    </div>
+    <LanguageProvider>
+      <div className={`${inter.variable} ${albertSans.variable}`}>
+        <Component {...pageProps} />
+        <Chatbot />
+      </div>
+    </LanguageProvider>
   );
 }

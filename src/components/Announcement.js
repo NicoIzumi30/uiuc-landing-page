@@ -1,6 +1,7 @@
 "use client"
 
 import { Calendar, ChevronRight, Megaphone } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
 const announcementData = [
   {
@@ -100,6 +101,7 @@ const eventData = [
 ]
 
 export default function Announcement() {
+  const { t } = useLanguage();
   return (
     <section id="pengumuman" className="py-12 sm:py-16 bg-primary  relative overflow-hidden">
       {/* Main content */}
@@ -110,7 +112,7 @@ export default function Announcement() {
           <div className="flex flex-col h-full">
             <div className="flex items-center gap-3 mb-6 sm:mb-8">
               <Megaphone className="h-6 w-6 sm:h-8 sm:w-8 text-secondary" />
-              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white">PENGUMUMAN</h2>
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white">{t('announce.heading')}</h2>
             </div>
             
             <div className="space-y-4 sm:space-y-6 flex-1">
@@ -130,7 +132,7 @@ export default function Announcement() {
             <div className="mt-6 sm:mt-8">
               <button className="flex items-center gap-2 border border-white text-white hover:border-none hover:bg-secondary hover:text-primary px-4 sm:px-6 py-2 sm:py-3 rounded-lg transition-all duration-300 group text-sm sm:text-base w-full sm:w-auto justify-center sm:justify-start">
                 <Megaphone className="h-4 w-4" />
-                <span className="font-medium">PENGUMUMAN LAINNYA</span>
+                <span className="font-medium">{t('announce.more')}</span>
                 <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
@@ -140,7 +142,7 @@ export default function Announcement() {
           <div className="flex flex-col h-full">
             <div className="flex items-center gap-3 mb-6 sm:mb-8">
               <Calendar className="h-6 w-6 sm:h-8 sm:w-8 text-secondary" />
-              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white">EVENT/KEGIATAN</h2>
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white">{t('events.heading')}</h2>
             </div>
             
             <div className="space-y-3 sm:space-y-4 flex-1">
@@ -188,7 +190,7 @@ export default function Announcement() {
             <div className="mt-6 sm:mt-8">
               <button className="flex items-center gap-2 border border-white text-white hover:border-none hover:bg-secondary hover:text-primary px-4 sm:px-6 py-2 sm:py-3 rounded-lg transition-all duration-300 group text-sm sm:text-base w-full sm:w-auto justify-center sm:justify-start">
                 <Calendar className="h-4 w-4" />
-                <span className="font-medium">KEGIATAN LAINNYA</span>
+                <span className="font-medium">{t('events.more')}</span>
                 <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>

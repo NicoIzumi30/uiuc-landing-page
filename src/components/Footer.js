@@ -2,8 +2,10 @@
 
 import { MapPin, Phone, Mail, MessageCircle } from "lucide-react"
 import Image from "next/image"
+import { useLanguage } from "@/context/LanguageContext"
 
 export default function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="bg-primary text-white relative overflow-hidden">
       {/* Main footer content */}
@@ -22,10 +24,7 @@ export default function Footer() {
                 />
               </div>
               <p className="text-blue-100 text-sm leading-relaxed max-w-md">
-                Menjadi universitas yang berorientasi dalam bidang teknologi dan
-                kewirausahaan, untuk mendukung masyarakat daerah dengan
-                menghasilkan lulusan yang mampu untuk menanggapi
-                perubahan jaman.
+                {t('footer.vision')}
               </p>
             </div>
 
@@ -35,26 +34,26 @@ export default function Footer() {
                 <MapPin className="h-5 w-5 text-secondary mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-sm text-blue-100">
-                    Jl. Kesambi No.202, Drajat, Kec. Kesambi, Kota Cirebon,
+                    {t('footer.addressLine1')}
                     <br />
-                    Jawa Barat 45133
+                    {t('footer.addressLine2')}
                   </p>
                 </div>
               </div>
 
               <div className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-secondary flex-shrink-0" />
-                <span className="text-sm text-blue-100">0231 - 2004 - 18</span>
+                <span className="text-sm text-blue-100">{t('footer.phone')}</span>
               </div>
 
               <div className="flex items-center gap-3">
                 <MessageCircle className="h-5 w-5 text-secondary flex-shrink-0" />
-                <span className="text-sm text-blue-100">0895 - 1231 - 4188</span>
+                <span className="text-sm text-blue-100">{t('footer.wa')}</span>
               </div>
 
               <div className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-secondary flex-shrink-0" />
-                <span className="text-sm text-blue-100">info@cic.ac.id</span>
+                <span className="text-sm text-blue-100">{t('footer.email')}</span>
               </div>
             </div>
           </div>
@@ -64,36 +63,36 @@ export default function Footer() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {/* Profil */}
               <div>
-                <h4 className="text-lg font-semibold mb-4">Profil</h4>
+                <h4 className="text-lg font-semibold mb-4">{t('footer.headings.profil')}</h4>
                 <ul className="space-y-3">
                   <li>
                     <a href="#" className="text-sm text-blue-100 hover:text-white transition-colors">
-                      Tentang Kami
+                      {t('footer.items.tentangKami')}
                     </a>
                   </li>
                   <li>
                     <a href="#" className="text-sm text-blue-100 hover:text-white transition-colors">
-                      Struktur Organisasi
+                      {t('footer.items.strukturOrganisasi')}
                     </a>
                   </li>
                   <li>
                     <a href="#" className="text-sm text-blue-100 hover:text-white transition-colors">
-                      Visi Misi & Tujuan
+                      {t('footer.items.visiMisiTujuan')}
                     </a>
                   </li>
                   <li>
                     <a href="#" className="text-sm text-blue-100 hover:text-white transition-colors">
-                      Program Kerja
+                      {t('footer.items.programKerja')}
                     </a>
                   </li>
                   <li>
                     <a href="#" className="text-sm text-blue-100 hover:text-white transition-colors">
-                      Mekanisme PPEPP
+                      {t('footer.items.mekanismePpepp')}
                     </a>
                   </li>
                   <li>
                     <a href="#" className="text-sm text-blue-100 hover:text-white transition-colors">
-                      Siklus Audit
+                      {t('footer.items.siklusAudit')}
                     </a>
                   </li>
                 </ul>
@@ -101,31 +100,31 @@ export default function Footer() {
 
               {/* Dokumen */}
               <div>
-                <h4 className="text-lg font-semibold mb-4">Dokumen</h4>
+                <h4 className="text-lg font-semibold mb-4">{t('footer.headings.dokumen')}</h4>
                 <ul className="space-y-3">
                   <li>
                     <a href="#" className="text-sm text-blue-100 hover:text-white transition-colors">
-                      Kebijakan Mutu
+                      {t('footer.items.kebijakanMutu')}
                     </a>
                   </li>
                   <li>
                     <a href="#" className="text-sm text-blue-100 hover:text-white transition-colors">
-                      Manual Mutu
+                      {t('footer.items.manualMutu')}
                     </a>
                   </li>
                   <li>
                     <a href="#" className="text-sm text-blue-100 hover:text-white transition-colors">
-                      Standar Mutu
+                      {t('footer.items.standarMutu')}
                     </a>
                   </li>
                   <li>
                     <a href="#" className="text-sm text-blue-100 hover:text-white transition-colors">
-                      Formulir Mutu
+                      {t('footer.items.formulirMutu')}
                     </a>
                   </li>
                   <li>
                     <a href="#" className="text-sm text-blue-100 hover:text-white transition-colors">
-                      SOP
+                      {t('footer.items.sop')}
                     </a>
                   </li>
                 </ul>
@@ -133,26 +132,26 @@ export default function Footer() {
 
               {/* Laporan */}
               <div>
-                <h4 className="text-lg font-semibold mb-4">Laporan</h4>
+                <h4 className="text-lg font-semibold mb-4">{t('footer.headings.laporan')}</h4>
                 <ul className="space-y-3">
                   <li>
                     <a href="#" className="text-sm text-blue-100 hover:text-white transition-colors">
-                      Akademik
+                      {t('footer.items.akademik')}
                     </a>
                   </li>
                   <li>
                     <a href="#" className="text-sm text-blue-100 hover:text-white transition-colors">
-                      Non Akademik
+                      {t('footer.items.nonAkademik')}
                     </a>
                   </li>
                   <li>
                     <a href="#" className="text-sm text-blue-100 hover:text-white transition-colors">
-                      Benchmarking
+                      {t('footer.items.benchmarking')}
                     </a>
                   </li>
                   <li>
                     <a href="#" className="text-sm text-blue-100 hover:text-white transition-colors">
-                      PPEPP
+                      {t('footer.items.ppepp')}
                     </a>
                   </li>
                 </ul>
@@ -162,21 +161,21 @@ export default function Footer() {
               <div className="space-y-8">
                 {/* Akreditasi */}
                 <div>
-                  <h4 className="text-lg font-semibold mb-4">Akreditasi</h4>
+                  <h4 className="text-lg font-semibold mb-4">{t('footer.headings.akreditasi')}</h4>
                   <ul className="space-y-3">
                     <li>
                       <a href="#" className="text-sm text-blue-100 hover:text-white transition-colors">
-                        Institusi
+                        {t('footer.items.institusi')}
                       </a>
                     </li>
                     <li>
                       <a href="#" className="text-sm text-blue-100 hover:text-white transition-colors">
-                        Program Studi
+                        {t('footer.items.programStudi')}
                       </a>
                     </li>
                     <li>
                       <a href="#" className="text-sm text-blue-100 hover:text-white transition-colors">
-                        Perpustakaan
+                        {t('footer.items.perpustakaan')}
                       </a>
                     </li>
                   </ul>
@@ -184,21 +183,21 @@ export default function Footer() {
 
                 {/* Lainnya */}
                 <div>
-                  <h4 className="text-lg font-semibold mb-4">Lainnya</h4>
+                  <h4 className="text-lg font-semibold mb-4">{t('footer.headings.lainnya')}</h4>
                   <ul className="space-y-3">
                     <li>
                       <a href="#" className="text-sm text-blue-100 hover:text-white transition-colors">
-                        Galeri
+                        {t('footer.items.galeri')}
                       </a>
                     </li>
                     <li>
                       <a href="#" className="text-sm text-blue-100 hover:text-white transition-colors">
-                        Agenda
+                        {t('footer.items.agenda')}
                       </a>
                     </li>
                     <li>
                       <a href="#" className="text-sm text-blue-100 hover:text-white transition-colors">
-                        Download
+                        {t('footer.items.download')}
                       </a>
                     </li>
                   </ul>
@@ -214,7 +213,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-sm text-blue-200">
-              © CIC - Universitas Catur Insan Cendekia Kota Cirebon. All Rights Reserved.
+              {t('footer.copyright')}
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { ChevronDown, ChevronUp, ExternalLink, Download, BookOpen, Monitor, Calculator, Users, Building2 } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
 // Computer Science Faculty Programs
 const computerSciencePrograms = [
@@ -12,7 +13,7 @@ const computerSciencePrograms = [
     duration: "4 Tahun",
     degree: "S1 (Sarjana)",
     accreditation: "A",
-    pdfUrl: "/pdf/biaya-teknik-informatika.html",
+    pdfUrl: "/pdf/Biaya.pdf",
     color: "bg-blue-500"
   },
   {
@@ -22,7 +23,7 @@ const computerSciencePrograms = [
     duration: "4 Tahun",
     degree: "S1 (Sarjana)",
     accreditation: "A",
-    pdfUrl: "/pdf/biaya-teknik-informatika.html",
+    pdfUrl: "/pdf/Biaya.pdf",
     color: "bg-green-500"
   },
   {
@@ -32,7 +33,7 @@ const computerSciencePrograms = [
     duration: "4 Tahun",
     degree: "S1 (Sarjana)",
     accreditation: "B",
-    pdfUrl: "/pdf/biaya-teknik-informatika.html",
+    pdfUrl: "/pdf/Biaya.pdf",
     color: "bg-pink-500"
   },
   {
@@ -42,7 +43,7 @@ const computerSciencePrograms = [
     duration: "3 Tahun",
     degree: "D3 (Diploma)",
     accreditation: "B",
-    pdfUrl: "/pdf/biaya-teknik-informatika.html",
+    pdfUrl: "/pdf/Biaya.pdf",
     color: "bg-indigo-500"
   },
   {
@@ -52,7 +53,7 @@ const computerSciencePrograms = [
     duration: "3 Tahun",
     degree: "D3 (Diploma)",
     accreditation: "B",
-    pdfUrl: "/pdf/biaya-teknik-informatika.html",
+    pdfUrl: "/pdf/Biaya.pdf",
     color: "bg-teal-500"
   }
 ]
@@ -66,7 +67,7 @@ const economicsBusinessPrograms = [
     duration: "4 Tahun",
     degree: "S1 (Sarjana)",
     accreditation: "A",
-    pdfUrl: "/pdf/biaya-teknik-informatika.html",
+    pdfUrl: "/pdf/Biaya.pdf",
     color: "bg-purple-500"
   },
   {
@@ -76,7 +77,7 @@ const economicsBusinessPrograms = [
     duration: "4 Tahun",
     degree: "S1 (Sarjana)",
     accreditation: "A",
-    pdfUrl: "/pdf/biaya-teknik-informatika.html",
+    pdfUrl: "/pdf/Biaya.pdf",
     color: "bg-orange-500"
   },
   {
@@ -86,12 +87,13 @@ const economicsBusinessPrograms = [
     duration: "3 Tahun",
     degree: "D3 (Diploma)",
     accreditation: "B",
-    pdfUrl: "/pdf/biaya-teknik-informatika.html",
+    pdfUrl: "/pdf/Biaya.pdf",
     color: "bg-amber-500"
   }
 ]
 
 export default function StudyProgram() {
+  const { t } = useLanguage();
   const [expandedProgram, setExpandedProgram] = useState(null)
 
   const toggleExpansion = (programId) => {
@@ -144,7 +146,7 @@ export default function StudyProgram() {
               onClick={() => toggleExpansion(program.id)}
               className="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white px-4 sm:px-6 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto sm:ml-4"
             >
-              <span className="text-sm sm:text-base">Lihat Biaya</span>
+              <span className="text-sm sm:text-base">{t('study.actions.viewCost')}</span>
               {isExpanded ? (
                 <ChevronUp className="h-4 w-4" />
               ) : (
@@ -162,7 +164,7 @@ export default function StudyProgram() {
                 {/* PDF Preview */}
                 <div className="bg-white rounded-xl shadow-inner p-3 sm:p-4 order-2 lg:order-1">
                   <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-3 sm:mb-4 flex items-center gap-2">
-                    <span className="text-sm sm:text-base">Preview Biaya Kuliah</span>
+                    <span className="text-sm sm:text-base">{t('study.actions.previewTitle')}</span>
                   </h4>
                   
                   {/* PDF Iframe */}
@@ -177,23 +179,23 @@ export default function StudyProgram() {
                 <div className="space-y-3 sm:space-y-4 order-1 lg:order-2">
                   <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm">
                     <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-3 sm:mb-4">
-                      Informasi Program Studi
+                      {t('study.actions.infoTitle')}
                     </h4>
                     <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
                       <div className="flex justify-between py-2 border-b border-gray-100">
-                        <span className="text-gray-600">Program:</span>
+                        <span className="text-gray-600">{t('study.actions.labels.program')}</span>
                         <span className="font-medium text-right">{program.name}</span>
                       </div>
                       <div className="flex justify-between py-2 border-b border-gray-100">
-                        <span className="text-gray-600">Jenjang:</span>
+                        <span className="text-gray-600">{t('study.actions.labels.degree')}</span>
                         <span className="font-medium">{program.degree}</span>
                       </div>
                       <div className="flex justify-between py-2 border-b border-gray-100">
-                        <span className="text-gray-600">Durasi:</span>
+                        <span className="text-gray-600">{t('study.actions.labels.duration')}</span>
                         <span className="font-medium">{program.duration}</span>
                       </div>
                       <div className="flex justify-between py-2">
-                        <span className="text-gray-600">Akreditasi:</span>
+                        <span className="text-gray-600">{t('study.actions.labels.accreditation')}</span>
                         <span className="font-medium">{program.accreditation}</span>
                       </div>
                     </div>
@@ -206,7 +208,7 @@ export default function StudyProgram() {
                       className="w-full bg-primary hover:bg-primary-dark text-white px-4 sm:px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
                     >
                       <ExternalLink className="h-4 w-4" />
-                      Buka PDF di Tab Baru
+                      {t('study.actions.openPdf')}
                     </button>
                     
                     <button
@@ -214,7 +216,7 @@ export default function StudyProgram() {
                       className="w-full bg-secondary hover:bg-yellow-500 text-gray-800 px-4 sm:px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
                     >
                       <Download className="h-4 w-4" />
-                      Download PDF
+                      {t('study.actions.downloadPdf')}
                     </button>
                   </div>
                 </div>
@@ -233,11 +235,11 @@ export default function StudyProgram() {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800">
-              Program Studi
+              {t('study.heading')}
             </h1>
           </div>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto px-4">
-            Pilih program studi yang sesuai dengan minat dan bakat Anda. Setiap program dirancang untuk mempersiapkan lulusan yang kompeten dan siap berkarir.
+            {t('study.subtitle')}
           </p>
         </div>
 
@@ -246,7 +248,7 @@ export default function StudyProgram() {
           <div className="flex items-center gap-4 mb-8">
             <Monitor className="h-8 w-8 text-primary" />
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
-              Fakultas Ilmu Komputer
+              {t('study.faculty.cs')}
             </h2>
           </div>
           <div className="space-y-6">
@@ -259,7 +261,7 @@ export default function StudyProgram() {
           <div className="flex items-center gap-4 mb-8">
             <Building2 className="h-8 w-8 text-primary" />
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
-              Fakultas Ekonomi & Bisnis
+              {t('study.faculty.eb')}
             </h2>
           </div>
           <div className="space-y-6">

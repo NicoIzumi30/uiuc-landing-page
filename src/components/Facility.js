@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
 /**
  * Build facilitiesData by grouping images in /public/img/fasilitas by folder.
@@ -14,11 +15,11 @@ const fasilitasImages = [
   "/img/fasilitas/auditorium/1.jpeg",
   "/img/fasilitas/auditorium/2.jpeg",
   "/img/fasilitas/auditorium/3.jpeg",
-  "/img/fasilitas/aula/1.png",
-  "/img/fasilitas/aula/2.png",
-  "/img/fasilitas/aula/3.png",
-  "/img/fasilitas/aula/4.png",
-  "/img/fasilitas/gedungA/Gedung A (4).jpeg",
+  "/img/fasilitas/aula/1.jpg",
+  "/img/fasilitas/aula/2.jpg",
+  "/img/fasilitas/aula/3.jpg",
+  "/img/fasilitas/aula/4.jpg",
+  "/img/fasilitas/gedungA/Gedung A.jpeg",
   "/img/fasilitas/gedungB/Gedung B (1).jpeg",
   "/img/fasilitas/gedungB/Gedung B (2).jpeg",
   "/img/fasilitas/gedungB/Gedung B (3).jpeg",
@@ -205,6 +206,7 @@ const facilitiesData = Object.entries(groupedByFolder)
   })
 
 export default function Facility() {
+  const { t } = useLanguage();
   const [selectedFacility, setSelectedFacility] = useState(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [showAll, setShowAll] = useState(false)
@@ -246,10 +248,10 @@ export default function Facility() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
-            Fasilitas Kampus
+            {t('facility.heading')}
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Nikmati berbagai fasilitas modern yang mendukung kegiatan akademik dan non-akademik di CIC University
+            {t('facility.subtitle')}
           </p>
         </div>
 
@@ -283,7 +285,7 @@ export default function Facility() {
                   
                   {/* Gallery Indicator */}
                   <div className="mt-3 flex items-center gap-2">
-                    <span className="text-white/80 text-xs">Klik untuk melihat galeri</span>
+                    <span className="text-white/80 text-xs">{t('facility.hint')}</span>
                   </div>
                 </div>
 
@@ -302,7 +304,7 @@ export default function Facility() {
                 onClick={() => setShowAll(true)}
                 className="px-6 py-3 rounded-lg bg-primary text-white hover:bg-primary-dark transition-colors shadow"
               >
-                Lihat Lainnya ({facilitiesData.length - 9})
+                {t('facility.showMore', { n: facilitiesData.length - 9 })}
               </button>
             ) : (
               <button
@@ -312,7 +314,7 @@ export default function Facility() {
                 }}
                 className="px-6 py-3 rounded-lg bg-gray-200 text-gray-800 hover:bg-gray-300 transition-colors shadow"
               >
-                Tampilkan Lebih Sedikit
+                {t('facility.showLess')}
               </button>
             )}
           </div>

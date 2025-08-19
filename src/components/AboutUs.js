@@ -2,12 +2,8 @@
 
 import { useState } from "react"
 import { ChevronDown, ChevronRight, Menu, X } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
-const menuItems = [
-  { id: "welcome", label: "Sambutan Rektor" },
-  { id: "history", label: "Sejarah UCIC" },
-  { id: "vision", label: "Visi, Misi, & Tujuan" },
-]
 
 const contentData = {
   welcome: {
@@ -48,8 +44,10 @@ const contentData = {
 }
 
 export default function AboutUsPage() {
+  const { t } = useLanguage();
   const [activeMenu, setActiveMenu] = useState("vision")
   const [expandedItems, setExpandedItems] = useState(["vision"])
+  const menuIds = ["welcome", "history", "vision"];
 
   const toggleExpanded = (id) => {
     setExpandedItems((prev) => (prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]))
@@ -59,19 +57,19 @@ export default function AboutUsPage() {
     <div className={`${className}`}>
       <div className="p-4">
         <nav className="space-y-3">
-          {menuItems.map((item) => (
+          {menuIds.map((id) => (
             <button
-              key={item.id}
+              key={id}
               onClick={() => {
-                setActiveMenu(item.id)
+                setActiveMenu(id)
               }}
               className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-all duration-200 border ${
-                activeMenu === item.id
+                activeMenu === id
                   ? "bg-primary text-white font-medium border-primary shadow-lg"
                   : "text-gray-600 hover:bg-gray-50 border-gray-200 hover:border-gray-300"
               }`}
             >
-              {item.label}
+              {t(`about.menu.${id}`)}
             </button>
           ))}
         </nav>
@@ -87,7 +85,7 @@ export default function AboutUsPage() {
         {/* Header */}
         <div className="flex items-center gap-3 mb-8">
           <h1 className="text-2xl lg:text-3xl font-bold text-gray-800 uppercase tracking-wide">
-            {currentContent.title}
+            {t(`about.titles.${activeMenu}`)}
           </h1>
         </div>
 
@@ -147,7 +145,7 @@ export default function AboutUsPage() {
     <div id="profil" className="min-h-fit bg-white">
       <div className="text-center py-8">
         <div className="flex items-center justify-center gap-3 mb-2">
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-800">Tentang Kami</h1>
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-800">{t('about.header')}</h1>
         </div>
       </div>
 

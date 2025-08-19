@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import uni from '@/data/university-data.json';
+import { useLanguage } from '@/context/LanguageContext';
 
 const faculties = Array.isArray(uni?.fakultas_dan_prodi) ? uni.fakultas_dan_prodi : [];
 
@@ -12,6 +13,7 @@ const Navbar = () => {
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
   const [isFakultasOpenDesktop, setIsFakultasOpenDesktop] = useState(false);
   const [isFakultasOpenMobile, setIsFakultasOpenMobile] = useState(false);
+  const { lang, setLanguage, t } = useLanguage();
 
   const socialLinks = [
     { icon: 'fab fa-instagram', href: 'https://www.instagram.com/ucic.cirebon' },
@@ -23,12 +25,11 @@ const Navbar = () => {
   ];
 
   const navItems = [
-    { name: 'Beranda', href: '#beranda' },
-    { name: 'Pengumuman', href: '#pengumuman' },
-    { name: 'Berita', href: '#berita' },
-    { name: 'Profil', href: '#profil' },
-    { name: 'Fasilitas', href: '#fasilitas' },
-    { name: 'Fakultas', href: '#fakultas', isDropdown: true }
+    { key: 'beranda', href: '#beranda' },
+    { key: 'pengumuman', href: '#pengumuman' },
+    { key: 'berita', href: '#berita' },
+    { key: 'profil', href: '#profil' },
+    { key: 'fasilitas', href: '#fasilitas' }
   ];
 
   return (
@@ -78,16 +79,16 @@ const Navbar = () => {
                       className="flex items-center gap-2 hover:text-secondary transition-colors duration-200"
                       onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
                     >
-                      <div className="w-4 h-4 rounded-full overflow-hidden">
+                      <div className="w-4 h-4 rounded-full ">
                         <Image
-                          src="https://flagcdn.com/w20/id.png"
-                          alt="ID"
+                          src={`https://flagcdn.com/w20/${lang === 'id' ? 'id' : 'gb'}.png`}
+                          alt={lang === 'id' ? 'ID' : 'EN'}
                           width={16}
                           height={12}
                           className="object-cover"
                         />
                       </div>
-                      <span className="text-sm font-bold">ID</span>
+                      <span className="text-sm font-bold">{lang === 'id' ? 'ID' : 'EN'}</span>
                       <i className="fas fa-chevron-down text-xs"></i>
                     </button>
 
@@ -96,9 +97,25 @@ const Navbar = () => {
                         <Link
                           href="#"
                           className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 text-gray-700"
-                          onClick={() => setIsLanguageDropdownOpen(false)}
+                          onClick={() => { setLanguage('id'); setIsLanguageDropdownOpen(false); }}
                         >
-                          <div className="w-4 h-4 rounded-full overflow-hidden">
+                          <div className="w-4 h-4 rounded-full">
+                            <Image
+                              src="https://flagcdn.com/w20/id.png"
+                              alt="ID"
+                              width={16}
+                              height={12}
+                              className="object-cover"
+                            />
+                          </div>
+                          <span className="text-sm">ID</span>
+                        </Link>
+                        <Link
+                          href="#"
+                          className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 text-gray-700"
+                          onClick={() => { setLanguage('en'); setIsLanguageDropdownOpen(false); }}
+                        >
+                          <div className="w-4 h-4 rounded-full">
                             <Image
                               src="https://flagcdn.com/w20/gb.png"
                               alt="EN"
@@ -120,7 +137,7 @@ const Navbar = () => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 bg-secondary text-primary font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition"
                   >
-                    <span>Info PMB</span>
+                    <span>{t('common.pmbInfo')}</span>
                   </Link>
                 </div>
               </div>
@@ -138,7 +155,7 @@ const Navbar = () => {
                   href={item.href}
                   className="px-5 py-3 md:py-4 font-semibold text-base transition-colors duration-200 text-white hover:text-secondary"
                 >
-                  {item.name}
+                  {t(`nav.${item.key}`)}
                 </Link>
               ))}
 
@@ -149,7 +166,7 @@ const Navbar = () => {
                 onMouseLeave={() => setIsFakultasOpenDesktop(false)}
               >
                 <button className="px-5 py-3 md:py-4 font-semibold text-base transition-colors duration-200 text-white hover:text-secondary inline-flex items-center gap-2">
-                  Fakultas
+                  {t('nav.fakultas')}
                   <i className={`fas fa-chevron-down text-xs transition-transform ${isFakultasOpenDesktop ? 'rotate-180' : ''}`}></i>
                 </button>
 
@@ -192,7 +209,7 @@ const Navbar = () => {
               <button
                 onClick={() => setIsMobileMenuOpen(true)}
                 className="p-2"
-                aria-label="Buka menu"
+                aria-label={t('aria.openMenu')}
               >
                 <i className="fas fa-bars text-xl"></i>
               </button>
@@ -200,16 +217,12 @@ const Navbar = () => {
               {/* Logo */}
               <Link href="#beranda" className="flex items-center gap-2">
                 <Image
-                  src="/img/ucic-logo.svg"
+                  src="/img/cic.png"
                   alt="UCIC Logo"
-                  width={40}
+                  width={200}
                   height={40}
                   className="object-contain"
                 />
-                <div className="text-sm leading-tight">
-                  <div className="font-semibold">UCIC</div>
-                  <div className="opacity-90">Universitas CIC</div>
-                </div>
               </Link>
             </div>
 
@@ -220,18 +233,18 @@ const Navbar = () => {
                 <button
                   className="flex items-center gap-1"
                   onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
-                  aria-label="Pilih bahasa"
+                  aria-label={t('aria.chooseLanguage')}
                 >
-                  <div className="w-4 h-4 rounded-full overflow-hidden">
+                  <div className="w-4 h-4 rounded-full">
                     <Image
-                      src="https://flagcdn.com/w20/id.png"
-                      alt="ID"
+                      src={`https://flagcdn.com/w20/${lang === 'id' ? 'id' : 'gb'}.png`}
+                      alt={lang === 'id' ? 'ID' : 'EN'}
                       width={16}
                       height={12}
                       className="object-cover"
                     />
                   </div>
-                  <span className="text-sm font-bold">ID</span>
+                  <span className="text-sm font-bold">{lang === 'id' ? 'ID' : 'EN'}</span>
                   <i className="fas fa-chevron-down text-xs"></i>
                 </button>
 
@@ -240,7 +253,23 @@ const Navbar = () => {
                     <Link
                       href="#"
                       className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 text-gray-700 whitespace-nowrap"
-                      onClick={() => setIsLanguageDropdownOpen(false)}
+                      onClick={() => { setLanguage('id'); setIsLanguageDropdownOpen(false); }}
+                    >
+                      <div className="w-4 h-4 rounded-full">
+                        <Image
+                          src="https://flagcdn.com/w20/id.png"
+                          alt="ID"
+                          width={16}
+                          height={12}
+                          className="object-cover"
+                        />
+                      </div>
+                      <span className="text-sm">ID</span>
+                    </Link>
+                    <Link
+                      href="#"
+                      className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 text-gray-700 whitespace-nowrap"
+                      onClick={() => { setLanguage('en'); setIsLanguageDropdownOpen(false); }}
                     >
                       <div className="w-4 h-4 rounded-full overflow-hidden">
                         <Image
@@ -264,7 +293,7 @@ const Navbar = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-secondary text-primary font-semibold px-3 py-1.5 rounded-md hover:opacity-90 transition text-sm"
               >
-                <span>Info PMB</span>
+                <span>{t('common.pmbInfo')}</span>
               </Link>
             </div>
           </div>
@@ -280,7 +309,7 @@ const Navbar = () => {
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="p-2"
-                  aria-label="Tutup menu"
+                  aria-label={t('aria.closeMenu')}
                 >
                   <i className="fas fa-times text-xl"></i>
                 </button>
@@ -308,18 +337,18 @@ const Navbar = () => {
                   <button
                     className="flex items-center gap-1"
                     onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
-                    aria-label="Pilih bahasa"
+                    aria-label={t('aria.chooseLanguage')}
                   >
                     <div className="w-4 h-4 rounded-full overflow-hidden">
                       <Image
-                        src="https://flagcdn.com/w20/id.png"
-                        alt="ID"
+                        src={`https://flagcdn.com/w20/${lang === 'id' ? 'id' : 'gb'}.png`}
+                        alt={lang === 'id' ? 'ID' : 'EN'}
                         width={16}
                         height={12}
                         className="object-cover"
                       />
                     </div>
-                    <span className="text-sm font-bold">ID</span>
+                    <span className="text-sm font-bold">{lang === 'id' ? 'ID' : 'EN'}</span>
                     <i className="fas fa-chevron-down text-xs"></i>
                   </button>
 
@@ -329,6 +358,27 @@ const Navbar = () => {
                         href="#"
                         className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 text-gray-700 whitespace-nowrap"
                         onClick={() => {
+                          setLanguage('id');
+                          setIsLanguageDropdownOpen(false);
+                          setIsMobileMenuOpen(false);
+                        }}
+                      >
+                        <div className="w-4 h-4 rounded-full overflow-hidden">
+                          <Image
+                            src="https://flagcdn.com/w20/id.png"
+                            alt="ID"
+                            width={16}
+                            height={12}
+                            className="object-cover"
+                          />
+                        </div>
+                        <span className="text-sm">ID</span>
+                      </Link>
+                      <Link
+                        href="#"
+                        className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 text-gray-700 whitespace-nowrap"
+                        onClick={() => {
+                          setLanguage('en');
                           setIsLanguageDropdownOpen(false);
                           setIsMobileMenuOpen(false);
                         }}
@@ -355,7 +405,7 @@ const Navbar = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-secondary text-primary font-semibold px-3 py-1.5 rounded-md hover:opacity-90 transition text-sm"
                 >
-                  <span>Info PMB</span>
+                  <span>{t('common.pmbInfo')}</span>
                 </Link>
               </div>
             </div>
@@ -371,7 +421,7 @@ const Navbar = () => {
                       className="flex items-center justify-between py-4 text-lg font-medium transition-colors duration-200 hover:text-secondary"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      <span>{item.name}</span>
+                      <span>{t(`nav.${item.key}`)}</span>
                     </Link>
                   </div>
                 ))}
@@ -382,7 +432,7 @@ const Navbar = () => {
                     className="w-full flex items-center justify-between py-4 text-lg font-medium hover:text-secondary"
                     onClick={() => setIsFakultasOpenMobile(!isFakultasOpenMobile)}
                   >
-                    <span>Fakultas</span>
+                    <span>{t('nav.fakultas')}</span>
                     <i className={`fas fa-chevron-${isFakultasOpenMobile ? 'up' : 'down'} text-sm`}></i>
                   </button>
 

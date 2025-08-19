@@ -2,6 +2,7 @@
 
 import uni from "@/data/university-data.json"
 import { MapPin } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
 function buildEmbedUrl(url) {
   if (!url) return "https://www.google.com/maps?q=Universitas+Catur+Insan+Cendekia+Cirebon&output=embed"
@@ -14,6 +15,7 @@ function buildEmbedUrl(url) {
 }
 
 export default function MapSection() {
+  const { t } = useLanguage();
   const mapsUrl = uni?.identitas?.lokasi_google_maps || ""
   const embedUrl = buildEmbedUrl(mapsUrl)
 
@@ -25,7 +27,7 @@ export default function MapSection() {
           <div className="flex items-center justify-center gap-3 mb-3">
             <MapPin className="h-7 w-7 text-primary" />
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-800">
-              Lokasi Kampus
+              {t('map.heading')}
             </h2>
           </div>
           <p className="text-gray-600">
@@ -38,7 +40,7 @@ export default function MapSection() {
           <div className="aspect-[16/9] bg-gray-100">
             <iframe
               src={embedUrl}
-              title="Peta Lokasi UCIC"
+              title={t('map.title')}
               className="w-full h-full border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

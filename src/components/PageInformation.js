@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useState } from "react"
+import { useLanguage } from "@/context/LanguageContext"
 
 const initialPosts = [
   {
@@ -55,6 +56,7 @@ const initialPosts = [
 ]
 
 function Card({ post }) {
+  const { t } = useLanguage();
   return (
     <article className="overflow-hidden rounded-xl bg-white ring-1 ring-gray-200 shadow-sm hover:shadow-md transition-shadow hover:cursor-pointer">
       <div className="relative aspect-[16/9] w-full">
@@ -74,7 +76,7 @@ function Card({ post }) {
         </h3>
 
         <div className="mt-3 flex items-center gap-3 text-gray-500 text-xs border-t border-gray-100 pt-3">
-          <span>by {post.author}</span>
+          <span>{t('news.by')} {post.author}</span>
           <span className="inline-block h-1 w-1 rounded-full bg-gray-400" />
           <time>{post.date}</time>
         </div>
@@ -101,6 +103,7 @@ function SkeletonCard() {
 }
 
 export default function PageInformation() {
+  const { t } = useLanguage();
   const [items, setItems] = useState(initialPosts)
   const [loading, setLoading] = useState(false)
 
@@ -124,7 +127,7 @@ export default function PageInformation() {
         {/* Header */}
         <div className="relative mb-8 sm:mb-12">
           <h2 className="text-center text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800">
-            Berita
+            {t('news.heading')}
           </h2>
         </div>
 
@@ -150,7 +153,7 @@ export default function PageInformation() {
                 : 'text-primary hover:bg-primary hover:text-white'
             }`}
           >
-            {loading ? 'MEMUAT...' : 'BERITA LAINNYA'}
+            {loading ? t('news.button.loading') : t('news.button.more')}
           </button>
         </div>
       </div>

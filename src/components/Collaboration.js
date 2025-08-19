@@ -1,6 +1,7 @@
 "use client"
 
 import Marquee from "react-fast-marquee"
+import { useLanguage } from "@/context/LanguageContext"
 
 const collaborationData = [
   {
@@ -88,6 +89,7 @@ const createPlaceholderLogo = (name, color) => (
 )
 
 export default function Collaboration() {
+  const { t } = useLanguage();
   // Add placeholder logos to data
   const partnersWithLogos = collaborationData.map((partner, index) => ({
     ...partner,
@@ -104,10 +106,10 @@ export default function Collaboration() {
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
-            Kerjasama
+            {t('collab.heading')}
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            CIC University telah menjalin kerjasama strategis dengan berbagai perusahaan terkemuka untuk memberikan kesempatan terbaik bagi mahasiswa kami
+            {t('collab.desc')}
           </p>
         </div>
 

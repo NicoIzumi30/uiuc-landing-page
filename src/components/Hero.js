@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import uni from '@/data/university-data.json';
+import { useLanguage } from '@/context/LanguageContext';
 
 const slides = [
   {
@@ -24,6 +25,7 @@ export default function Hero() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const timerRef = useRef(null);
+  const { t } = useLanguage();
 
   const next = () => setIndex((i) => (i + 1) % slides.length);
   const prev = () => setIndex((i) => (i - 1 + slides.length) % slides.length);
@@ -83,16 +85,16 @@ export default function Hero() {
                   {/* Heading */}
                   <header className="space-y-1">
                     <h1 className="font-albert-sans text-2xl font-extrabold text-primary">
-                      Yuk Daftar PMB Sekarang!
+                      {t('hero.ctaTitle')}
                     </h1>
                     <p className="text-gray-500">
-                      Butuh bantuan seputar Pendaftaran Mahasiswa Baru (PMB)?
+                      {t('hero.ctaDesc')}
                     </p>
                   </header>
 
                   {/* WhatsApp contact */}
                   <div className="space-y-3">
-                    <h2 className="text-gray-500">WhatsApp</h2>
+                    <h2 className="text-gray-500">{t('hero.whatsapp')}</h2>
                     <div className="flex items-center gap-3">
                       <div className="inline-flex">
                         <Link
@@ -137,8 +139,8 @@ export default function Hero() {
                     className="flex items-center justify-between rounded-lg bg-primary px-6 py-5 focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2"
                   >
                     <div className="flex flex-col">
-                      <span className="text-white text-sm">Pendaftaran Mahasiswa Baru</span>
-                      <span className="text-white/90 -mt-1">pmb.cic.ac.id</span>
+                      <span className="text-white text-sm">{t('hero.pmbLabel')}</span>
+                      <span className="text-white/90 -mt-1">{t('hero.pmbDomain')}</span>
                     </div>
                     <span aria-hidden="true" className="inline-flex">
                       <Image src="/img/vector.svg" alt="" width={20} height={20} />
@@ -152,7 +154,7 @@ export default function Hero() {
             <div className="pointer-events-none absolute inset-y-0 left-0 right-0 flex items-center justify-between px-2 sm:px-4">
               <button
                 type="button"
-                aria-label="Slide sebelumnya"
+                aria-label={t('aria.prevSlide')}
                 onClick={prev}
                 className=" md:ml-[-2.3rem] pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary opacity-80 hover:opacity-100 text-white shadow-md focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 z-10"
               >
@@ -163,7 +165,7 @@ export default function Hero() {
               </button>
               <button
                 type="button"
-                aria-label="Slide berikutnya"
+                aria-label={t('aria.nextSlide')}
                 onClick={next}
                 className="md:mr-[-2.3rem] pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary opacity-80 hover:opacity-100 text-white shadow-md focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 z-10"
               >
@@ -179,7 +181,7 @@ export default function Hero() {
               {slides.map((_, i) => (
                 <button
                   key={i}
-                  aria-label={`Ke slide ${i + 1}`}
+                  aria-label={t('aria.goToSlide', { n: i + 1 })}
                   onClick={() => goTo(i)}
                   className={`h-2.5 w-2.5 rounded-full transition-colors ${i === index ? 'bg-white' : 'bg-white/50 hover:bg-white/70'}`}
                 />
