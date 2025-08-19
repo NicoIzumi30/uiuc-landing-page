@@ -1,7 +1,6 @@
 "use client"
 
 import uni from "@/data/university-data.json"
-import { MapPin } from "lucide-react"
 import { useLanguage } from "@/context/LanguageContext"
 
 function buildEmbedUrl(url) {
@@ -25,7 +24,6 @@ export default function MapSection() {
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12">
           <div className="flex items-center justify-center gap-3 mb-3">
-            <MapPin className="h-7 w-7 text-primary" />
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-800">
               {t('map.heading')}
             </h2>
